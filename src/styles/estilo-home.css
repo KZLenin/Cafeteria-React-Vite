@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+    list-style: none
+}
+
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular';
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.header-content{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)),
+        url(https://i.ibb.co/BCyygN3/cafe-frio.jpg) center bottom no-repeat;
+    background-size: cover;
+    background-position: center 20%;
+}
+
+
+/* Estilos generales para la sección de café */
+
+.coffee {
+    padding: 100px 0;
+    background-color: #fff3f5;
+    position: relative;
+}
+
+.coffee-content {
+    text-align: center;
+}
+
+.coffee-content h2 {
+    font-size: 45px;
+    line-height: 70px;
+    color: #bb5656; /* Color del título principal */
+    text-transform: uppercase;
+    padding: 0 150px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.txt-parrafo {
+    font-size: 23px;
+    color: #111b30; /* Color del párrafo principal */
+    padding: 0 250px;
+    margin-bottom: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+/* Grupo de divs: Separación y alineación */
+.coffee-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px; /* Reducir espacio entre divs */
+    margin-top: 50px; /* Separar del margen superior */
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+/* Estilo para cada div */
+.coffee-1 {
+    position: relative; /* Posicionamiento del contenido interno */
+    width: 350px; /* Ancho fijo para un mejor diseño */
+    padding: 20px;
+    overflow: hidden; /* Ocultar contenido que sobresalga */
+    border-radius: 10px;
+    background-color: #f6e2e2; /* Fondo de los divs */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Para centrar imagen y contenido */
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: space-between; /* Espaciar contenido */
+}
+
+/* Estilo para las imágenes */
+.coffee-1 img {
+    width: 350px; /* Ajustar tamaño */
+    height: 250px;
+    object-fit: cover; /* Asegura que las imágenes no se deformen */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición */
+}
+
+.coffee-1 img:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+}
+
+/* Títulos dentro de los divs */
+.coffee-1 .titulo-bebida {
+    color: #772026; /* Color de los títulos */
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-family: Verdana;
+    text-align: center;
+}
+
+/* Texto dentro de los divs */
+.coffee-1 .texto-bebida {
+    color: #1f0f0f;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    font-family: Verdana;
+    text-align: center;
+}
+
+/* Configuración del video que aparecerá dentro del index.html */
+/* La sección que contiene el video y el texto */
+.video-section {
+    position: relative;  /* Necesario para poder posicionar el texto sobre el video */
+    height: 100vh;  /* Establece la altura de la sección al 100% de la ventana */
+    overflow: hidden;  /* Asegura que el video no se desborde si cambia su tamaño */
+}
+
+/* El video como fondo */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.video-container::before {
+    content: '';  /* Crea una capa vacía */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);  /* Fondo negro con opacidad */
+    z-index: 1;  /* Pone la capa oscura encima del video */
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;  /* Asegura que el video esté debajo de la capa oscura */
+}
+
+/* Estilo para el título */
+.video-title {
+    position: absolute;
+    top: 40%;  /* Coloca el título ligeramente más arriba */
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centra el título */
+    color: #e2bbb7;  /* Color dorado para el título */
+    font-size: 40px;  /* Tamaño de fuente para el título */
+    font-family: verdana;
+    text-align: center;
+    z-index: 2;  /* Asegura que el título quede encima de todo */
+}
+
+/* Estilo para la descripción */
+.video-description {
+    position: absolute;
+    top: 55%;  /* Coloca la descripción un poco más abajo que el título */
+    left: 50%;
+    margin-top: 20px;
+    transform: translate(-50%, -50%);  /* Centra la descripción */
+    color: rgb(231, 216, 216);  /* Color blanco para la descripción */
+    font-size: 23px;  /* Tamaño de fuente para la descripción */
+    text-align: center;
+    font-family: Verdana;
+    z-index: 2;  /* Asegura que la descripción quede encima de la capa oscura */
+}
+
+/* Configuracion de la seccion */
+
+.shop-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-img {
+    margin-right: 35px;
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 430px;
+    height: 200px;
+    margin-bottom: 25px;
+}
+
+.job-img {
+    margin-right: 35px;
+    margin-top: 15px;
+    margin-left: 500px;
+    width: 410px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.title-shop {
+    padding-top: 120px;
+    margin-top: 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 252, 163);
+    font-size: 30px;
+}
+
+.title-job {
+    font-size: 30px;
+    padding-top: 20px;
+    margin-top: 15px;
+    margin-right: 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 252, 163);
+}
+
+.title-descarga {
+    padding-top: 20px;
+    margin-top: 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(117, 66, 8);
+    font-size: 30px;
+}
+
+.parrafo-shop{
+    margin-left: 75px;
+    padding-top: 5px;
+    color: rgb(243, 230, 230);
+    font-size: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.shop{
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)),
+        url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg) center bottom no-repeat;
+    background-size: cover;
+    background-position: center 20%;
+    min-height: 90vh;
+    margin-bottom: 10px;
+}
+
+.shop-content1{
+    display: flex;
+    align-items: center;
+}
+
+.parrafo-job{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 22px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    line-height: 1.5;
+    color: rgb(189, 182, 182);
+}
+
+.boton-2 {
+    display: inline-block;    /*Aplicar bien el margen y padding */
+    padding: 11px 25px;
+    margin-bottom: 30px;
+    margin-top: 1rem;
+    margin-left: 550px;
+    background-color: rgb(133, 42, 24);
+    color: rgb(255, 223, 223);
+    text-transform: Uppercase;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+}
+
+.boton-2:hover {
+    background-color: rgb(183, 120, 120);
+}
+
+.boton-3{
+    display: inline-block;    /*Aplicar bien el margen y padding */
+    padding: 11px 45px;
+    margin-bottom: 25px;
+    margin-left: 620px;
+    background-color: rgb(133, 42, 24);
+    color: rgb(255, 223, 223);
+    text-transform: Uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    border-color: white;
+}
+
+.boton-3:hover {
+    background-color: rgb(183, 120, 120);
+    cursor: pointer;
+}
+
+.descarga-app {
+    background-color:rgb(242, 232, 220);
+    margin-bottom: 15px;
+}
+
+.descarga-description{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 22px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    line-height: 1.5;
+    color: rgb(70, 30, 30);
+}
+
+.app-img {
+    margin-left: 300px;
+    width: 800px;
+    height: 400px;
+    margin-bottom: 25px;
+    object-fit: cover; /* Asegura que las imágenes no se deformen */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición */
+}
+
+.app-img:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+}
+
+/* Configuración del pie de página */
+.footer {
+    background-color: #170404; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center;
+    padding: 20px 0;
+    font-family: Verdana;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin-bottom: 15px;
+}
+
+/* Estilo para los enlaces */
+.footer-link {
+    color: #dfb7b7;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para las imágenes de redes sociales */
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
+    opacity: 0.8; /* Ligero efecto de transparencia */
+}

@@ -1,0 +1,100 @@
+.header {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    font-size: 65px;
+    font-weight: 800;
+    width: 50px;
+    height: 70px;
+}
+
+/* Añadir las dimensiones de la imagen */
+.logo img {
+    width: 120px;
+    height: 70px;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 26px;
+    color: rgb(242, 229, 215);
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu .navbar ul li a:hover {
+    color: rgb(229, 191, 198);
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.header-content {
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 60px;
+    line-height: 80px;
+    color: #f9e5b3;
+    margin-top: 39px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.header-content p {
+    font-size: 23px;
+    color: #C5C5C5;
+    padding: 0 250px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT';
+    text-align: center;
+}
+
+.boton-1 {
+    display: inline-block; /* Aplicar bien el margen y padding */
+    padding: 11px 40px;
+    margin-top: 15px;
+    background-color: rgb(133, 42, 24);
+    color: rgb(255, 223, 223);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+}
+
+.boton-1:hover {
+    background-color: rgb(183, 120, 120);
+}
