@@ -1,5 +1,6 @@
 .header {
-    min-height: 70vh;
+  /*  min-height: 70vh;*/
+    height: 80px;
     display: flex;
     align-items: center;
 }
@@ -59,6 +60,8 @@
 
 .header-content {
     text-align: center;
+    height: 500px;
+    width: 500;
 }
 
 .header-content h1 {
