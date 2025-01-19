@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import Desayunos from "../components/Desayunos";
+import Desayunos from "../components/Menu/Desayunos";
 import Footer from "../components/Footer";
-import Bebidas from "../components/Bebidas";
-import Postres from "../components/Postres";
-import Carrito from "../components/Carrito";
+import Bebidas from "../components/Menu/Bebidas";
+import Postres from "../components/Menu/Postres";
+import Carrito from "../components/Menu/Carrito";
 import "../styles/estilo-menu.css";
 
 import image1 from "../assets/2.jpg";

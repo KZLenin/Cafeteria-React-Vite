@@ -1,9 +1,9 @@
 import Header from "../components/Header";
-import Hero from "../components/Hero";
-import SectionCoffee from "../components/SectionCoffee";
-import SectionVideo from "../components/SectionVideo";
-import SectionShop from "../components/SectionShop";
-import DescargaApp from "../components/DescargaApp";
+import Hero from "../components/Inicio/Hero";
+import SectionCoffee from "../components/Inicio/SectionCoffee";
+import SectionVideo from "../components/Inicio/SectionVideo";
+import SectionShop from "../components/Inicio/SectionShop";
+import DescargaApp from "../components/Inicio/DescargaApp";
 import Footer from "../components/Footer";
 import "../styles/estilo-home.css";
 
