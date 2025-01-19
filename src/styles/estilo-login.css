@@ -1,0 +1,7 @@
+.login-card {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 2rem;
+    width: 25rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+  }
