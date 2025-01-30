@@ -1,3 +1,4 @@
+import "../styles/estilo-login.css"; 
 import appFirebase  from "../credenciales";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth(appFirebase)

@@ -36,24 +36,32 @@ const Postres = ({ agregarAlCarrito }) => {
   return (
     <div className="menu-section">
       <h2>Postres</h2>
-      <div className="slider-container">
-        <div className="slider" ref={sliderRef}>
+      <div id="carouselPostres" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
           {productos.map((producto, index) => (
-            <div className="item" key={index}>
-              <img src={producto.img} alt={producto.nombre} />
-              <h3>{producto.nombre}</h3>
-              <p>{producto.descripcion}</p>
-              <span className="price">${producto.precio}</span>
-              <button className="add-to-cart" onClick={() => agregarAlCarrito(producto)}>
-                Ordenar
-              </button>
+            <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+              <div className="card" style={{ width: "18rem", margin: "auto" }}>
+                <img src={producto.img} className="card-img-top" alt={producto.nombre} />
+                <div className="card-body text-center">
+                  <h5 className="card-title">{producto.nombre}</h5>
+                  <p className="card-text">{producto.descripcion}</p>
+                  <span className="price">${producto.precio.toFixed(2)}</span>
+                  <button className="btn btn-primary d-block w-100 mt-2" onClick={() => agregarAlCarrito(producto)}>
+                    Ordenar
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-      <div className="carousel-controls">
-        <button className="prev" onClick={handlePrev}>‹</button>
-        <button className="next" onClick={handleNext}>›</button>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselPostres" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Anterior</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselPostres" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Siguiente</span>
+        </button>
       </div>
     </div>
   );

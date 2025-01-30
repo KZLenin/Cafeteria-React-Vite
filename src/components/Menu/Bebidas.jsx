@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import cafelecheImg from "../../assets/cafeleche.jpg";
 import capuccinoVanillaImg from "../../assets/capuccino-vainilla.jpg";
 import chocolateAmbaImg from "../../assets/Chocolateamba.jpg";
@@ -13,20 +13,6 @@ import oreoWebImg from "../../assets/oreo-web.jpg";
 import "../../styles/estilo-menu.css";
 
 const Bebidas = ({ agregarAlCarrito }) => {
-  const sliderRef = useRef(null);
-
-  const handlePrev = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft -= sliderRef.current.offsetWidth;
-    }
-  };
-
-  const handleNext = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft += sliderRef.current.offsetWidth;
-    }
-  };
-
   const productos = [
     { nombre: "Café Espresso", descripcion: "Café concentrado, fuerte y aromático", precio: 2.25, img: cafelecheImg },
     { nombre: "Latte", descripcion: "Café con leche vaporizada y suave espuma", precio: 2.90, img: capuccinoVanillaImg },
@@ -44,24 +30,32 @@ const Bebidas = ({ agregarAlCarrito }) => {
   return (
     <div className="menu-section">
       <h2>Bebidas</h2>
-      <div className="slider-container">
-        <div className="slider" ref={sliderRef}>
+      <div id="carouselBebidas" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
           {productos.map((producto, index) => (
-            <div className="item" key={index}>
-              <img src={producto.img} alt={producto.nombre} />
-              <h3>{producto.nombre}</h3>
-              <p>{producto.descripcion}</p>
-              <span className="price">${producto.precio}</span>
-              <button className="add-to-cart" onClick={() => agregarAlCarrito(producto)}>
-                Ordenar
-              </button>
+            <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+              <div className="card" style={{ width: "18rem", margin: "auto" }}>
+                <img src={producto.img} className="card-img-top" alt={producto.nombre} />
+                <div className="card-body text-center">
+                  <h5 className="card-title">{producto.nombre}</h5>
+                  <p className="card-text">{producto.descripcion}</p>
+                  <span className="price">${producto.precio.toFixed(2)}</span>
+                  <button className="btn btn-primary d-block w-100 mt-2" onClick={() => agregarAlCarrito(producto)}>
+                    Ordenar
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-      <div className="carousel-controls">
-        <button className="prev" onClick={handlePrev}>‹</button>
-        <button className="next" onClick={handleNext}>›</button>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselBebidas" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Anterior</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselBebidas" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Siguiente</span>
+        </button>
       </div>
     </div>
   );

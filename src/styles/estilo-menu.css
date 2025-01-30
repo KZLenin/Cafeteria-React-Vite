@@ -35,7 +35,7 @@ body{
 }
 
 /* Estilos para los items del menú */
-.item {
+.card {
     background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -45,42 +45,8 @@ body{
     color: white;
 }
 
-.item:hover {
-    transform: translateY(-10px);
-}
 
-.item img {
-    width: auto;
-    height: 200px; /* Tamaño uniforme */
-    object-fit: cover; /* Ajusta el contenido sin distorsionar */
-    border-radius: 8px;
-}
 
-.item h3 {
-    margin: 15px 0 10px;
-    font-size: 1.2em;
-}
-
-.item p {
-    font-size: 0.9em;
-    margin-bottom: 15px;
-    font-family: Verdana;
-}
-
-.item button {
-    padding: 10px 20px;
-    font-size: 0.9em;
-    color: #fff;
-    background-color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.item button:hover {
-    background-color: #555;
-}
 
 /* Banner con imágenes de separación */
 .banner-img {
@@ -105,42 +71,7 @@ body{
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
 }
 
-/* Carrusel */
-.slider {
-    display: flex;
-    width: 100vw; /* Ocupa solo el ancho de la pantalla */
-    overflow: hidden; /* Oculta contenido que desborde el contenedor */
-    scroll-behavior: smooth;
-    position: relative;
-}
 
-.slider .item {
-    flex: 0 0 100%; /* Cada ítem ocupa el 100% del contenedor */
-    max-width: 100%; /* Evita que los elementos desborden */
-    box-sizing: border-box;
-}
-
-/* Controles del carrusel */
-.carousel-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.carousel-controls .prev,
-.carousel-controls .next {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.carousel-controls .prev:hover,
-.carousel-controls .next:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-}
 
 /* Precio */
 .price {

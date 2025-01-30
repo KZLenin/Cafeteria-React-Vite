@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/estilo-login.css"; 
+
 
 import appFirebase from '../../credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
