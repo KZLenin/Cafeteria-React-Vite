@@ -16,17 +16,30 @@ const Menu = () => {
   const [mostrarPago, setMostrarPago] = useState(false);
 
   // Agregar producto al carrito
-  const agregarAlCarrito = (producto) => {
-    setProductos((prev) => [...prev, producto]);
-  };
+  const agregarAlCarrito = (producto) => { 
+    setProductos((prev) => {
+      const index = prev.findIndex((p) => p.nombre === producto.nombre);
+      if (index !== -1) {
+        // Si el producto ya está en el carrito, aumentar cantidad
+        return prev.map((p, i) => 
+          i === index ? { ...p, cantidad: p.cantidad + 1 } : p
+        );
+      } 
+      // Si es nuevo, agregarlo con cantidad 1
+      return [...prev, { ...producto, cantidad: 1 }];
+    });
+};
 
-  // Eliminar producto del carrito
+  // Eliminar un producto (reducir cantidad o eliminar)
   const eliminarDelCarrito = (index) => {
     setProductos((prev) => prev.filter((_, i) => i !== index));
   };
 
   // Calcular total
-  const total = productos.reduce((acc, producto) => acc + producto.precio, 0);
+  const total = productos.reduce(
+    (acc, producto) => acc + producto.precio * producto.cantidad,
+    0
+  );
 
   return (
     <>

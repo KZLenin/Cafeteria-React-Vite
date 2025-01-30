@@ -60,7 +60,7 @@ const Desayunos = ({ agregarAlCarrito }) => {
                   <h5 className="card-title">{producto.nombre}</h5>
                   <p className="card-text">{producto.descripcion}</p>
                   <span className="price">${producto.precio.toFixed(2)}</span>
-                  <button className="btn btn-primary d-block w-100 mt-2" onClick={() => agregarAlCarrito(producto)}>
+                  <button className="btn btn-outline-warning d-block w-100 mt-2" onClick={() => agregarAlCarrito(producto)}>
                     Ordenar
                   </button>
                 </div>

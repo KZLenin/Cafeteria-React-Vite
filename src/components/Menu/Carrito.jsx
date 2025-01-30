@@ -15,13 +15,13 @@ const Carrito = ({ productos, eliminarDelCarrito, total }) => {
             {productos.map((producto, index) => (
               <li key={index}>
                 {producto.nombre} - ${producto.precio.toFixed(2)}
-                <button onClick={() => eliminarDelCarrito(index)}>Eliminar</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" onClick={() => eliminarDelCarrito(index)}>Eliminar</button>
               </li>
             ))}
           </ul>
           <h3>Total: ${total.toFixed(2)}</h3>
           {/* Botón para redirigir a la página de Reservas */}
-          <button onClick={() => navigate("/Reservas")}>Ir a Pagar</button>
+          <button type="button" class="btn btn-outline-secondary" onClick={() => navigate("/Reservas")}>Ir a Pagar</button>
         </>
       )}
     </div>
