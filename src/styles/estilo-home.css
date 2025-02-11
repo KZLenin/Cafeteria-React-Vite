@@ -464,21 +464,31 @@ p {
 
 /* Configuración del pie de página */
 .footer {
-    background-color: #17040400; /* Color de fondo */
+    background-color: #170404; /* Fondo oscuro */
     color: white; /* Color del texto */
     text-align: center;
-    padding: auto;
+    padding: 20px 0; /* Espaciado arriba y abajo */
     font-family: Verdana;
+    display: flex;
+    justify-content: center; /* Centra contenido horizontalmente */
+    align-items: center; /* Centra contenido verticalmente */
+    flex-direction: column; /* Asegura que los elementos estén en columna */
 }
 
+/* Contenedor del footer */
 .footer-container {
     max-width: 1200px;
-    margin: 0 auto;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin: 0 auto; /* Centrado horizontal */
 }
 
+/* Secciones del footer */
 .footer-section {
     margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
 }
+
 
 /* Estilo para los enlaces */
 .footer-link {
