@@ -45,6 +45,7 @@ const Menu = () => {
   return (
     <>
       <Header />
+      <div className="main-content">
       {!mostrarPago ? (
         <>
           <Desayunos agregarAlCarrito={agregarAlCarrito} />
@@ -77,7 +78,14 @@ const Menu = () => {
           <button onClick={() => setMostrarPago(false)}>Volver al Menú</button>
         </div>
       )}
+      </div>
       <Footer />
+      <style jsx="true">{`
+        /* Ajuste de margen superior para evitar superposición con el header */
+        .main-content {
+          margin-top: 110px; /* Ajusta el valor si la altura del header es mayor */
+        }
+      `}</style>
     </>
   );
 };

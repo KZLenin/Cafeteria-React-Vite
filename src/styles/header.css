@@ -1,116 +1,90 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: none;
-    list-style: none
+    box-sizing: border-box;
+    list-style: none;
 }
+
+/* Mantiene el fondo de la página en el header */
 .header {
-  /*  min-height: 70vh;*/
-    height: 80px;
-    display: flex;
-    align-items: auto;
+    background: transparent; /* Para que se vea la imagen de fondo */
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0;
 }
 
-.menu {
-    display: flex;
-    height: auto; /* Incrementa la altura total del menú para acomodar un logo más grande */
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    width: 600px; /* Aumenta significativamente el ancho del logo */
-    height: 200px; /* Aumenta la altura del contenedor */
-    margin-left: -100px; /* Ajusta este valor para moverlo más a la izquierda */
-
-}
-
+/* Logo */
 .logo img {
-    width: 80% !important;/* Ajusta el logo al tamaño completo del contenedor */
-    height: 80% !important; /* Permite que ocupe toda la altura */
-    object-fit: contain; /* Mantén las proporciones del logo */
+    width: 150px;
+    height: auto;
 }
 
-.menu .navbar ul {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0;
+/* Navbar links */
+.navbar-nav {
+    text-align: center;
 }
 
-.menu .navbar ul li {
-    position: relative;
-    float: left;
-
+.navbar-nav .nav-item {
+    padding: 10px 15px;
 }
 
-.menu .navbar ul li a {
-    font-size: 19px;
-    padding: 20px;
+.navbar-nav .nav-link {
     color: rgb(242, 229, 215);
-    display: block;
+    font-size: 18px;
     font-weight: 600;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-.menu .navbar ul li a:hover {
+.navbar-nav .nav-link:hover {
     color: rgb(229, 209, 191);
 }
 
-#menu {
-    display: none;
+/* Botón de Login */
+.btn-auth {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
 }
 
-.menu-icono {
-    width: 25px;
+.btn-auth:hover {
+    background: white;
+    color: black;
 }
 
-.header-content {
-    text-align: center;
-    height: 500px;
-    width: 500;
-}
+/* Estilos para móviles */
+@media (max-width: 768px) {
+    .navbar {
+        background: rgba(0, 0, 0, 0.8); /* Fondo más oscuro en móviles */
+    }
 
-.header-content h1 {
-    font-size: 60px;
-    line-height: 80px;
-    color: #f9e5b3;
-    margin-bottom: 5px;
-    margin-left: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    padding-top: 100px;    
-}
+    .logo img {
+        width: 120px;
+    }
 
-.header-content p {
-    font-size: 23px;
-    color: #C5C5C5;
-    padding: 0 250px;
-    line-height: 1.5;
-    margin-bottom: 25px;
-    margin-left: 25px;
-    font-family: 'Gill Sans', 'Gill Sans MT';
-    text-align: center;
-}
+    .navbar-nav {
+        text-align: center;
+        padding: 10px 0;
+    }
 
-.boton-1 {
-    display: inline-block; /* Aplicar bien el margen y padding */
-    padding: 11px 40px;
-    margin-top: 15px;
-    background-color: rgb(133, 42, 24);
-    color: rgb(221, 221, 221);
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 20px;
-}
+    .navbar-nav .nav-item {
+        padding: 8px 0;
+    }
 
-.boton-1:hover {
-    background-color: rgb(183, 120, 120);
-}
+    .navbar-toggler {
+        border: none;
+    }
 
-a:hover {
-    color: #000000;
-  }
-  
+    .navbar-toggler-icon {
+        filter: invert(1);
+    }
+}

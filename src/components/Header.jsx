@@ -20,26 +20,56 @@ const Header = () => {
     if (usuario) {
       signOut(auth);
     } else {
-      window.location.href = "/login"; // Redirige a la página de login
+      window.location.href = "/login";
     }
   };
+
   return (
     <header className="header">
-      <div className="menu container">
-        <div className="logo">
-          <img src={Logo} alt="Logo de la cafetería" />
+      <nav className="navbar navbar-expand-lg navbar-dark">
+        <div className="container">
+          {/* Logo */}
+          <a className="navbar-brand logo" href="/">
+            <img src={Logo} alt="Logo de la cafetería" />
+          </a>
+
+          {/* Botón Hamburguesa */}
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+          {/* Menú */}
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/">Inicio</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/informacion">Información</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/menu">Menú</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/reservas">Reservas</a>
+              </li>
+              <li className="nav-item">
+                <button className="btn btn-auth" onClick={handleAuth}>
+                  {usuario ? "Cerrar sesión" : "Login"}
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <nav className="navbar">
-          <ul>
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/informacion">Información</a></li>
-            <li><a href="/menu">Menú</a></li>
-            <li><a href="/reservas">Reservas</a></li>
-            <button type="button" class="btn btn-outline-light btn-sm" onClick={handleAuth}>
-            {usuario ? "Cerrar sesión" : "Login"}</button>
-          </ul>
-        </nav>
-      </div>
+      </nav>
     </header>
   );
 };

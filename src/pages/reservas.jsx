@@ -11,7 +11,7 @@ const Reservas = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="main-content">
         <section className="reserva">
           <div className="reserva-contenido">
             <div className="texto">
@@ -177,6 +177,12 @@ const Reservas = () => {
         </section>
       </main>
       <Footer />
+      <style jsx="true">{`
+        /* Ajuste de margen superior para evitar superposición con el header */
+        .main-content {
+          margin-top: 110px; /* Ajusta el valor si la altura del header es mayor */
+        }
+      `}</style>
     </>
   );
 };

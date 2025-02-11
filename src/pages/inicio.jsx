@@ -11,12 +11,20 @@ const Inicio = ()=> {
     return (
       <>
         <Header />
+        <div className="main-content">
         <Hero />
         <SectionCoffee />
         <SectionVideo />
         <SectionShop />
         <DescargaApp />
         <Footer />
+        </div>
+        <style jsx="true">{`
+        /* Ajuste de margen superior para evitar superposición con el header */
+        .main-content {
+          margin-top: 110px; /* Ajusta el valor si la altura del header es mayor */
+        }
+      `}</style>
       </>
     );
   }
