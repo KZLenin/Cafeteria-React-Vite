@@ -105,19 +105,18 @@ p {
 
 /* Estilo para cada div */
 .coffee-1 {
-    width: 30%; /* Ocupa un tercio del espacio */
-    min-width: 300px; /* Tamaño mínimo para evitar que se deformen */
-    max-width: 350px; /* Tamaño máximo */
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f6e2e2;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: space-between;
-    text-align: center;
-    height: 250px; /* Asegura que el contenedor tenga una altura definida */
+  width: 30%; /* Ocupa un tercio del espacio */
+  min-width: 300px; /* Tamaño mínimo para evitar que se deformen */
+  max-width: 350px; /* Tamaño máximo */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f6e2e2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between;
+  text-align: center;
 }
 
 /* Media Query para pantallas pequeñas */
