@@ -142,7 +142,7 @@ p {
 
 /* Estilo para las imágenes */
 .coffee-1 img {
-    width: 350px;
+    width: 100%;
     height: 250px;
     object-fit: cover; /* Asegura que las imágenes no se deformen */
     border-radius: 5px; /* Bordes redondeados */
