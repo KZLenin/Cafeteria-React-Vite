@@ -176,10 +176,13 @@ p {
 .coffee-1 .texto-bebida {
     color: #1f0f0f;
     font-size: 15px;
-    margin-bottom: 10px;
-    margin-top: 2px;
+    margin: 0; /* Eliminar márgenes extra que puedan desplazar el texto */
     font-family: Verdana;
     text-align: center;
+    display: flex; /* Utiliza flexbox para centrar el texto verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente si es necesario */
+    height: 100%; /* Asegura que el texto se distribuya correctamente dentro del contenedor */
 }
 
 /* Configuración del video que aparecerá dentro del index.html */
