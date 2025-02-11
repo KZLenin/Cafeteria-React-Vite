@@ -8,6 +8,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color:rgb(255, 252, 163);
   line-height: bold;
+  text-transform: uppercase;
 }
 
 .header-content {
@@ -21,9 +22,10 @@ body {
 
 p {
   font-size: 1.2rem;
-  color: #555;
+  color: #f7f3f3;
   max-width: 600px;
   margin-bottom: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .boton-1 {
@@ -32,6 +34,7 @@ p {
   color: white;
   padding: 12px 24px;
   font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
