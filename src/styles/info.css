@@ -46,17 +46,17 @@ p {
     color: #ffd700;
 }
 
-.sucursal button {
-    background-color: #ffd700;
-    color: #000;
-    font-weight: bold;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%; /* Asegura que todos los botones tengan el mismo ancho */
-    max-width: 150px; /* Ajusta el tamaño máximo de los botones */
-    text-align: center;
+.btn.btn-outline-warning{
+    display: inline-block;    /*Aplicar bien el margen y padding */
+    padding: 11px 45px;
+    margin-top: 30px;
+    background-color: rgb(133, 42, 24);
+    color: rgb(255, 223, 223);
+    text-transform: Uppercase;       /*Convertir el texto a mayúscula*/
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    border-color: black;
 }
 
 
