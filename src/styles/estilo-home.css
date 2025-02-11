@@ -464,13 +464,16 @@ p {
 /* Configuración del pie de página */
 .footer {
     color: white; /* Color del texto */
-    text-align: center;
+    text-align: center; /* Centrado del texto */
     padding: 20px 0; /* Espaciado arriba y abajo */
     font-family: Verdana;
     display: flex;
     justify-content: center; /* Centra contenido horizontalmente */
     align-items: center; /* Centra contenido verticalmente */
-    flex-direction: column; /* Asegura que los elementos estén en columna */
+    width: 100%; /* Asegura que el footer ocupe todo el ancho */
+    height: 100vh; /* Asegura que el footer tenga altura suficiente para centrar el contenido */
+    position: fixed;
+    bottom: 0; /* Coloca el footer en la parte inferior */
 }
 
 /* Contenedor del footer */
@@ -487,6 +490,10 @@ p {
     text-align: center;
 }
 
+.footer-section p {
+  color: white;
+  font-size: 16px;
+}
 
 /* Estilo para los enlaces */
 .footer-link {
