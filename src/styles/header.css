@@ -61,6 +61,21 @@
     color: black;
 }
 
+.navbar-toggler {
+    border-color: white !important;
+  }
+  
+  .navbar-toggler-icon {
+    filter: invert(1); /* Convierte el ícono a blanco */
+  }
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+}
+.header {
+    width: 100vw; /* Asegura que ocupe el ancho exacto de la pantalla */
+    left: 0; /* Fijar al borde izquierdo */
+}
 /* Estilos para móviles */
 @media (max-width: 768px) {
     .navbar {
@@ -81,6 +96,7 @@
     }
 
     .navbar-toggler {
+        
         border: none;
     }
 
