@@ -3,7 +3,6 @@ body {
     font-family:'Lucida Sans', 'Lucida Sans Regular';
 }
 
-/* Color al titulo general 'Bienvenidos' */ 
 .title-general {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -238,70 +237,6 @@ body {
   .boton-2:hover {
     background-color: rgb(167, 108, 66);
   }
-  
-  /* Contenedor de la segunda sección (Trabajo) */
-  .shop-content2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .title-job {
-    font-size: 30px;
-    padding-top: 20px;
-    margin-top: 15px;
-    margin-right: 15px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(255, 252, 163);
-  }
-  
-  .job-img {
-    margin-top: 15px;
-    width: 30%;
-    max-width: 600px;
-    height: auto;
-    margin: 15px auto;
-    border-radius: 15px;
-
-  }
-  
-  .parrafo-job {
-    padding-left: auto;
-    width: 80%;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    color: rgb(210, 206, 206);
-  }
-  
-  /* Botón de contacto */
-  .boton-3 {
-    display: inline-block;
-    padding: 11px 25px;
-    margin-bottom: 30px;
-    margin-top: 1rem;
-    background-color: rgb(133, 42, 24);
-    color: rgb(255, 223, 223);
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 20px;
-    border-color: rgb(14, 14, 14);
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .boton-3:hover {
-    background-color: rgb(167, 108, 66);
-    color: #000000;
-  }
-
-
 
 /* SECCIÓN DESCARGA APP */
 .descarga-app {
@@ -489,6 +424,7 @@ body {
     transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
     opacity: 0.8; /* Ligero efecto de transparencia */
 }
+
 
 .social-icon:hover {
     transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
