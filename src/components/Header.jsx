@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/header.css";
-import Logo from "../assets/logo.jpg";
+import Logo from "../assets/Held Coffee Shop Logo.png";
+
 const Header = () => {
   return (
     <header className="header">
       <div className="menu container">
         <div className="logo">
-          <img src={Logo} alt="logo cafeteria" />
+          <img src={Logo} alt="Logo de la cafetería" />
         </div>
         <nav className="navbar">
           <ul>
