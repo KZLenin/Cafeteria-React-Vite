@@ -74,10 +74,12 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*Estilos para el parrafo general de las categorias */
 .txt-parrafo {
-    font-size: 23px;
+    font-size: 21px;
     color: #111b30; /* Color del párrafo principal */
     padding: 0 250px;
+    text-align: center;
     margin-bottom: 35px;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
