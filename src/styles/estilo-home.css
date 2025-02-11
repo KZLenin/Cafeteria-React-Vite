@@ -16,16 +16,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100vh; /* Ocupa toda la pantalla */
-  background-color: #f8f8f8; /* Color de fondo suave */
   padding: 20px;
-}
-
-.title-general {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
 }
 
 p {
