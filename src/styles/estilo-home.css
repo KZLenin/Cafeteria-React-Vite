@@ -6,7 +6,56 @@ body {
 .title-general {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color:rgb(255, 252, 163)
+  color:rgb(255, 252, 163);
+  line-height: bold;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh; /* Ocupa toda la pantalla */
+  background-color: #f8f8f8; /* Color de fondo suave */
+  padding: 20px;
+}
+
+.title-general {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.boton-1 {
+  display: inline-block;
+  background-color: #d9534f; /* Rojo */
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.boton-1:hover {
+  background-color: #c9302c; /* Rojo más oscuro */
+  transform: scale(1.05);
+}
+
+.boton-1:active {
+  background-color: #a52722;
+  transform: scale(0.98);
 }
 
 /* Estilos generales para la sección de café y bebidas */
@@ -425,6 +474,11 @@ body {
     opacity: 0.8; /* Ligero efecto de transparencia */
 }
 
+
+.social-icon:hover {
+    transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
+    opacity: 0.8; /* Ligero efecto de transparencia */
+}
 
 .social-icon:hover {
     transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
