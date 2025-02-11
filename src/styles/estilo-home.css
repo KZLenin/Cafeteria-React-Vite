@@ -469,7 +469,12 @@ p {
 .footer-section p {
   color: white;
   font-size: 16px;
-    text-align: center;
+  text-align: center; /* Asegura que el texto se alinee en el centro horizontalmente */
+  margin: 0; /* Elimina márgenes extra que puedan afectar el alineamiento */
+  padding: 0; /* Elimina el padding que podría afectar el alineamiento */
+  display: flex; /* Usamos flexbox para asegurar que el contenido se centre correctamente */
+  justify-content: center; /* Centra el texto horizontalmente */
+  align-items: center; /* Centra el texto verticalmente dentro del contenedor */
 }
 
 /* Estilo para los enlaces */
