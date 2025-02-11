@@ -1,7 +1,7 @@
 const Hero = () => {
     return(
         <div className="header-content">
-        <h1 classname = "title-general">Bienvenidos!</h1>
+        <h1 className = "title-general">Bienvenidos!</h1>
         <p>
           En HELD Coffee Shop nos preocupamos porque tu estancia en nuestra cafetería sea reconfortante.
           <br />
