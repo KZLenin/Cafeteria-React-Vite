@@ -1,17 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: none;
-    list-style: none
-}
 
 body {
     font-family:'Lucida Sans', 'Lucida Sans Regular';
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 
@@ -21,14 +10,15 @@ body {
         rgba(0, 0, 0, 0.7)),
         url(https://i.ibb.co/BCyygN3/cafe-frio.jpg) center bottom no-repeat;
     background-size: cover;
-    background-position: center 20%;
+    background-position: center 25%;
+    
 }
 
 
 /* Estilos generales para la sección de café */
 
 .coffee {
-    padding: 100px 0;
+    padding: 35px 0;
     background-color: #fff3f5;
     position: relative;
 }
@@ -60,16 +50,15 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 5px; /* Reducir espacio entre divs */
-    margin-top: 50px; /* Separar del margen superior */
-    margin-left: 25px;
-    margin-right: 25px;
+    max-width: 1200px; /* Ancho máximo para los divs */
+    margin: auto;
 }
 
 /* Estilo para cada div */
 .coffee-1 {
     position: relative; /* Posicionamiento del contenido interno */
     width: 350px; /* Ancho fijo para un mejor diseño */
-    padding: 20px;
+    padding: auto;
     overflow: hidden; /* Ocultar contenido que sobresalga */
     border-radius: 10px;
     background-color: #f6e2e2; /* Fondo de los divs */
@@ -102,6 +91,7 @@ body {
     margin-bottom: 10px;
     font-family: Verdana;
     text-align: center;
+    font-weight: bold;
 }
 
 /* Texto dentro de los divs */
@@ -119,7 +109,9 @@ body {
 .video-section {
     position: relative;  /* Necesario para poder posicionar el texto sobre el video */
     height: 100vh;  /* Establece la altura de la sección al 100% de la ventana */
+    width: 100%;  /* Establece el ancho de la sección al 100% de la ventana */
     overflow: hidden;  /* Asegura que el video no se desborde si cambia su tamaño */
+    margin: 0%;  /* Elimina el relleno predeterminado */
 }
 
 /* El video como fondo */
@@ -127,13 +119,13 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    z-index: 0;  /* Asegura que el video esté detrás de todo */
 }
 
 .video-container::before {
     content: '';  /* Crea una capa vacía */
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);  /* Fondo negro con opacidad */
@@ -153,7 +145,7 @@ body {
     top: 40%;  /* Coloca el título ligeramente más arriba */
     left: 50%;
     transform: translate(-50%, -50%);  /* Centra el título */
-    color: #e2bbb7;  /* Color dorado para el título */
+    color: #917471;  /* Color dorado para el título */
     font-size: 40px;  /* Tamaño de fuente para el título */
     font-family: verdana;
     text-align: center;
@@ -176,39 +168,92 @@ body {
 
 /* Configuracion de la seccion */
 
-.shop-content {
+/* Eliminar márgenes fijos y ajustar disposición */
+/* Sección general de la tienda */
+.shop {
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg) center bottom no-repeat;
+    background-size: cover;
+    background-position: center 20%;
+    margin: 0;
+    min-height: 90vh;
+    padding: 20px 0;  /* Espaciado interior */
     display: flex;
-    justify-content: space-between;
-}
-
-.shop-img {
-    margin-right: 35px;
-    margin-top: 15px;
-    margin-left: 15px;
-    width: 430px;
-    height: 200px;
-    margin-bottom: 25px;
-}
-
-.job-img {
-    margin-right: 35px;
-    margin-top: 15px;
-    margin-left: 500px;
-    width: 410px;
-    height: 200px;
-    margin-bottom: 15px;
-}
-
-.title-shop {
-    padding-top: 120px;
-    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Título de la tienda */
+  .title-shop {
+    padding-top: 40px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 252, 163);
     font-size: 30px;
-}
+  }
+  
+  /* Contenedor de los elementos de la primera sección */
+  .shop-content1 {
+    display: flex;
+    flex-direction: column; /* Apila elementos verticalmente */
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    text-align: center;
+  }
+  
+  .shop-img {
+    order: 2; /* Posiciona la imagen después del párrafo */
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 15px;
 
-.title-job {
+  }
+  
+  .parrafo-shop {
+    order: 1; /* Posiciona el párrafo primero */
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .boton-2 {
+    order: 3; /* Posiciona el botón después de la imagen */
+    margin: 20px auto;
+    display: inline-block;
+    padding: 11px 25px;
+    background-color: rgb(133, 42, 24);
+    color: rgb(255, 223, 223);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-color: #17040400;
+    border-radius: 20px;
+    font-size: 18px;
+    width: fit-content;
+    text-align: center;
+  }
+  
+  .boton-2:hover {
+    background-color: rgb(167, 108, 66);
+  }
+  
+  /* Contenedor de la segunda sección (Trabajo) */
+  .shop-content2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .title-job {
     font-size: 30px;
     padding-top: 20px;
     margin-top: 15px;
@@ -216,134 +261,196 @@ body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 252, 163);
-}
-
-.title-descarga {
-    padding-top: 20px;
+  }
+  
+  .job-img {
     margin-top: 15px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(117, 66, 8);
-    font-size: 30px;
-}
+    width: 30%;
+    max-width: 600px;
+    height: auto;
+    margin: 15px auto;
+    border-radius: 15px;
 
-.parrafo-shop{
-    margin-left: 75px;
-    padding-top: 5px;
-    color: rgb(243, 230, 230);
-    font-size: 25px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-}
-
-.shop{
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7)),
-        url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg) center bottom no-repeat;
-    background-size: cover;
-    background-position: center 20%;
-    min-height: 90vh;
-    margin-bottom: 10px;
-}
-
-.shop-content1{
-    display: flex;
-    align-items: center;
-}
-
-.parrafo-job{
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-right: 20px;
-    font-size: 22px;
+  }
+  
+  .parrafo-job {
+    padding-left: auto;
+    width: 80%;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    line-height: 1.5;
-    color: rgb(189, 182, 182);
-}
-
-.boton-2 {
-    display: inline-block;    /*Aplicar bien el margen y padding */
+    color: rgb(210, 206, 206);
+  }
+  
+  /* Botón de contacto */
+  .boton-3 {
+    display: inline-block;
     padding: 11px 25px;
     margin-bottom: 30px;
     margin-top: 1rem;
-    margin-left: 550px;
     background-color: rgb(133, 42, 24);
     color: rgb(255, 223, 223);
-    text-transform: Uppercase;
-    text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 20px;
-    font-size: 18px;
-}
-
-.boton-2:hover {
-    background-color: rgb(183, 120, 120);
-}
-
-.boton-3{
-    display: inline-block;    /*Aplicar bien el margen y padding */
-    padding: 11px 45px;
-    margin-bottom: 25px;
-    margin-left: 620px;
-    background-color: rgb(133, 42, 24);
-    color: rgb(255, 223, 223);
-    text-transform: Uppercase;
+    text-transform: uppercase;
     text-decoration: none;
     font-size: 18px;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 20px;
-    border-color: white;
-}
-
-.boton-3:hover {
-    background-color: rgb(183, 120, 120);
-    cursor: pointer;
-}
-
-.descarga-app {
-    background-color:rgb(242, 232, 220);
-    margin-bottom: 15px;
-}
-
-.descarga-description{
-    margin-left: 20px;
-    margin-top: 10px;
-    margin-right: 20px;
-    font-size: 22px;
+    border-color: rgb(14, 14, 14);
     text-align: center;
+    cursor: pointer;
+  }
+  
+  .boton-3:hover {
+    background-color: rgb(167, 108, 66);
+    color: #000000;
+  }
+
+
+/* SECCIÓN DESCARGA APP */
+.descarga-app {
+    background-color: #f2e8dc00;
+    margin-bottom: 15px;
+    margin-top: 0px !important;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title-descarga {
+    color: #eeb186;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .descarga-description{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 22px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 25px;
+    margin-bottom: auto;
     padding-bottom: 15px;
     line-height: 1.5;
-    color: rgb(70, 30, 30);
-}
+    color: rgb(221, 211, 204);   
+  }
 
-.app-img {
-    margin-left: 300px;
+  
+  /* Contenedores para botones de descarga */
+    .descarga-botones a {
+    display: inline-block;
+    width: 200px; 
+    height: 75px;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    background: rgba(255, 255, 255, 0); /* Fondo uniforme */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    margin: 0 25px; /* Espacio entre botones */
+  }
+  
+  /* Asegurar misma altura y alineación vertical */
+  .descarga-botones {
+    display: flex;
+    align-items: center; /* Alineación vertical perfecta */
+    justify-content: center;
+  }
+  
+  /* Imágenes internas */
+  .descarga-botones img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+  /* Efectos hover unificados */
+  .descarga-botones a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Efecto de "levantado" */
+  .descarga-botones a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  
+  
+  /* Estilos responsivos para imágenes */
+  .app-img {
     width: 800px;
-    height: 400px;
-    margin-bottom: 25px;
+    height: auto;
+    border-radius: 15px;
+    margin: 2rem auto;
     object-fit: cover; /* Asegura que las imágenes no se deformen */
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 10px; /* Bordes redondeados */
     transition: transform 0.3s ease, opacity 0.3s ease; /* Transición */
-}
-
-.app-img:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .app-img:hover {
     transform: scale(1.05); /* Aumenta ligeramente el tamaño */
     opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
-}
+  }
+
+  /* Mobile First */
+  @media (max-width: 768px) {
+    .descarga-app {
+      padding: 2rem 1rem;
+    }
+    
+    .title-descarga {
+      font-size: 2rem;
+    }
+  
+    .descarga-botones {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .app-store-btn,
+    .google-play-btn {
+      width: 180px;
+    }
+  
+    .app-img {
+      margin: 1rem auto;
+      max-width: 95%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .descarga-description {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+    
+    .app-store-btn,
+    .google-play-btn {
+      width: 160px;
+    }
+  }
 
 /* Configuración del pie de página */
 .footer {
-    background-color: #170404; /* Color de fondo */
+    background-color: #17040400; /* Color de fondo */
     color: white; /* Color del texto */
     text-align: center;
-    padding: 20px 0;
+    padding: auto;
     font-family: Verdana;
 }
 
@@ -361,11 +468,14 @@ body {
     color: #dfb7b7;
     text-decoration: none;
     margin: 0 5px;
+    transition: color 0.3s ease-in-out; /* Transición suave */
 }
 
 .footer-link:hover {
     text-decoration: underline;
+    color: #b76e6e; /* Nuevo color al pasar el mouse */
 }
+
 
 /* Estilo para las imágenes de redes sociales */
 .social-icons a {
