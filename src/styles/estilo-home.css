@@ -344,12 +344,11 @@ p {
     font-size: 22px;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: auto;
-    margin-right: 60px;
+    margin-right: 100px;
     padding-bottom: 15px;
     line-height: 1.5;
     color: rgb(221, 211, 204);   
   }
-
   
   /* Contenedores para botones de descarga */
     .descarga-botones a {
@@ -402,9 +401,7 @@ p {
     z-index: -1;
     transition: all 0.3s ease;
   }
-  
-  
-  
+
   /* Estilos responsivos para imágenes */
   .app-img {
     width: 800px;
@@ -488,6 +485,7 @@ p {
 .footer-section p {
   color: white;
   font-size: 16px;
+    text-align: center;
 }
 
 /* Estilo para los enlaces */
