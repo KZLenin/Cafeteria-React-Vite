@@ -1,44 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+    list-style: none
+}
 .header {
   /*  min-height: 70vh;*/
     height: 80px;
     display: flex;
-    align-items: center;
+    align-items: auto;
 }
 
 .menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: auto; /* Incrementa la altura total del menú para acomodar un logo más grande */
 }
 
 .logo {
-    color: white;
-    font-size: 65px;
-    font-weight: 800;
-    width: 50px;
-    height: 70px;
+    display: flex;
+    align-items: center;
+    width: 600px; /* Aumenta significativamente el ancho del logo */
+    height: 200px; /* Aumenta la altura del contenedor */
+    margin-left: -100px; /* Ajusta este valor para moverlo más a la izquierda */
+
 }
 
-/* Añadir las dimensiones de la imagen */
 .logo img {
-    width: 120px;
-    height: 70px;
-    padding-top: 15px;
-    padding-left: 10px;
+    width: 80% !important;/* Ajusta el logo al tamaño completo del contenedor */
+    height: 80% !important; /* Permite que ocupe toda la altura */
+    object-fit: contain; /* Mantén las proporciones del logo */
 }
+
 
 .menu .navbar ul li {
     position: relative;
     float: left;
+
 }
 
 .menu .navbar ul li a {
-    font-size: 18px;
-    padding: 26px;
+    font-size: 19px;
+    padding: 20px;
     color: rgb(242, 229, 215);
     display: block;
     font-weight: 600;
@@ -47,7 +49,7 @@
 }
 
 .menu .navbar ul li a:hover {
-    color: rgb(229, 191, 198);
+    color: rgb(229, 209, 191);
 }
 
 #menu {
@@ -68,11 +70,11 @@
     font-size: 60px;
     line-height: 80px;
     color: #f9e5b3;
-    margin-top: 39px;
     margin-bottom: 5px;
     margin-left: 50px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    padding-top: 100px;    
 }
 
 .header-content p {
@@ -91,7 +93,7 @@
     padding: 11px 40px;
     margin-top: 15px;
     background-color: rgb(133, 42, 24);
-    color: rgb(255, 223, 223);
+    color: rgb(221, 221, 221);
     text-transform: uppercase;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -101,3 +103,8 @@
 .boton-1:hover {
     background-color: rgb(183, 120, 120);
 }
+
+a:hover {
+    color: #000000;
+  }
+  
