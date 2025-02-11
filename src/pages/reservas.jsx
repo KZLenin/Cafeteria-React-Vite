@@ -5,7 +5,7 @@ import fotocafe from "../assets/c2.png";
 import bancamovil from "../assets/banca-movil.jpeg";
 import tarjetas from "../assets/tarjetas-img.jpg";
 import banca from "../assets/banca2.png";
-import "../styles/estilo-reservas.css";
+
 
 const Reservas = () => {
   return (
