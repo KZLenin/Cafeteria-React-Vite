@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Bebidas from "../components/Menu/Bebidas";
 import Postres from "../components/Menu/Postres";
 import Carrito from "../components/Menu/Carrito";
+import Otros from "../components/Menu/Otros";
 import "../styles/estilo-menu.css";
 
 import image1 from "../assets/2.jpg";
@@ -58,6 +59,7 @@ const Menu = () => {
           <div className="banner-img">
             <img src={image3} alt="Banner de Menú" />
           </div>
+          <Otros agregarAlCarrito={agregarAlCarrito} />
           <Carrito
             productos={productos}
             eliminarDelCarrito={eliminarDelCarrito}

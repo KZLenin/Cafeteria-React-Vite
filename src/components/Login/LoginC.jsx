@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-
 import appFirebase from '../../credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const auth = getAuth(appFirebase);
+const db = getFirestore(appFirebase);
 
 const LoginForm = () => {
   const [registrando, setRegistrando] = useState(false);
@@ -16,7 +17,12 @@ const LoginForm = () => {
 
     try {
       if (registrando) {
-        await createUserWithEmailAndPassword(auth, correo, contraseña);
+        const userCredential = await createUserWithEmailAndPassword(auth, correo, contraseña);
+        const user = userCredential.user;
+        await setDoc(doc(db, "usuarios", user.uid), {
+          correo,
+          rol: "usuario",
+        });
         alert("Usuario registrado exitosamente");
       } else {
         await signInWithEmailAndPassword(auth, correo, contraseña);
