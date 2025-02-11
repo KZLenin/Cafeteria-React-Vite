@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import "../styles/estilo-login.css"; 
 import appFirebase  from "../credenciales";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -11,7 +12,9 @@ const auth = getAuth(appFirebase)
 const Login = ()=> {
 
     const[usuario, setUsuario]= useState(null)
+    const [esAdmin, setEsAdmin] = useState(false);
     const db = getFirestore(appFirebase);
+    const navigate = useNavigate(); // Hook para redirigir
 
     useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (usuarioFirebase) => {
@@ -23,13 +26,14 @@ const Login = ()=> {
         } else {
           setEsAdmin(false);
         }
+        navigate("/");
       } else {
         setUsuario(null);
         setEsAdmin(false);
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
 
   return (
