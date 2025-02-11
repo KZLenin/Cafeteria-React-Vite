@@ -339,17 +339,17 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
- .lead{
-    text-align: center;
+.lead {
+    text-align: center; /* Centra el texto */
     margin-top: 10px;
     font-size: 22px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: auto;
-    margin-right: 125px;
+    margin: 0 auto; /* Esto asegura que el elemento esté centrado en su contenedor */
     padding-bottom: 15px;
     line-height: 1.5;
-    color: rgb(221, 211, 204);   
-  }
+    color: rgb(221, 211, 204);
+    width: fit-content; /* O puede ser un ancho específico si es necesario */
+}
   
   /* Contenedores para botones de descarga */
     .descarga-botones a {
@@ -371,37 +371,17 @@ p {
     display: flex;
     align-items: center; /* Alineación vertical perfecta */
     justify-content: center;
-  }
-  
-  /* Imágenes internas */
-  .descarga-botones img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  } 
 
-  /* Efectos hover unificados */
-  .descarga-botones a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  }
-  
-  /* Efecto de "levantado" */
-  .descarga-botones a::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    z-index: -1;
-    transition: all 0.3s ease;
-  }
+  /* Efecto hover para la imagen */
+.img-fluid {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+}
 
   /* Estilos responsivos para imágenes */
   .app-img {
