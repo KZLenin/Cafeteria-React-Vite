@@ -1,5 +1,9 @@
 import React from 'react';
-import './Footer.css';
+import facebookIcon from '../assets/facebook.png';
+import whatsappIcon from '../assets/whatsapp.png';
+import instagramIcon from '../assets/instagram.png';
+
+import '../styles/footer.css';
 
 const Footer = () => {
   return (
@@ -21,7 +25,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="social-icon"
           >
-            <img src="Sources/facebook.png" alt="Facebook" width="30" />
+            <img src={facebookIcon}alt="Facebook" width="30" />
           </a>
           <a
             href="https://wa.me/990754359"
@@ -29,7 +33,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="social-icon"
           >
-            <img src="Sources/whatsapp.png" alt="WhatsApp" width="30" />
+            <img src={whatsappIcon} alt="WhatsApp" width="30" />
           </a>
           <a
             href="https://www.instagram.com/danna.mishelle._"
@@ -37,7 +41,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="social-icon"
           >
-            <img src="Sources/instagram.png" alt="Instagram" width="30" />
+            <img src={instagramIcon} alt="Instagram" width="30" />
           </a>
         </div>
       </div>
