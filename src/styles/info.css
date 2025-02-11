@@ -3,7 +3,9 @@
     padding: 40px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
+p {
+    text-align: left;
+}
 .conocenos h2 {
     font-size: 2rem;
     color: #ffe82d;
@@ -14,6 +16,9 @@
     color: white;
     font-family: Verdana;
     line-height: 1.5;
+    text-align: center !important;
+    margin: 0 auto; /* Para asegurar que no haya desplazamientos laterales */
+    max-width: 80%; /* Opcional: evita que el texto sea demasiado ancho */
 }
 
 .sucursales {
