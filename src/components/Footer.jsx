@@ -11,16 +11,16 @@ const Footer = () => {
           <a href="#" className="footer-link">Términos de Uso</a>
         </div>
         <div className="footer-section">
-          <p>© 2024 HELD Coffee Shop. Todos los derechos reservados.</p>
+          <p>© 2025 HELD Coffee Shop. Todos los derechos reservados.</p>
         </div>
         <div className="footer-section social-icons">
-          <a href="https://www.facebook.com/DannaMishelle" target="_blank">
+          <a href="https://www.facebook.com/" target="_blank">
             <img src={fb} alt="Facebook" className="social-icon" />
           </a>
-          <a href="https://wa.me/983203628" target="_blank">
+          <a href="https://wa.me/" target="_blank">
             <img src={wh} alt="WhatsApp" className="social-icon" />
           </a>
-          <a href="https://www.instagram.com/danna.mishelle._" target="_blank">
+          <a href="https://www.instagram.com/" target="_blank">
             <img src={ig} alt="Instagram" className="social-icon" />
           </a>
         </div>
@@ -30,5 +30,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-/* hola*/
