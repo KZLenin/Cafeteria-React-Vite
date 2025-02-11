@@ -31,6 +31,12 @@
     object-fit: contain; /* Mantén las proporciones del logo */
 }
 
+.menu .navbar ul {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
 
 .menu .navbar ul li {
     position: relative;
