@@ -99,7 +99,7 @@ const Admin = () => {
   return (
     <div className="container mt-5">
       <h1>Admin Dashboard</h1>
-      <button className="btn btn-danger mb-3" onClick={() => signOut(auth)}>Cerrar sesión</button>
+      <button className="btn btn-outline-danger mb-3" onClick={() => signOut(auth)}>Cerrar sesión</button>
 
       <div className="login-background">
         <div className="d-flex justify-content-center align-items-center vh-100">
@@ -127,7 +127,7 @@ const Admin = () => {
                 <input type="url" className="form-control bg-dark text-white border-light" id="productImage" name="imagen" value={nuevoProducto.imagen} onChange={handleInputChange} placeholder="URL de la imagen" required />
               </div>
 
-              <button type="submit" className="btn btn-outline-warning w-100">Registrar Producto</button>
+              <button type="submit" className="btn btn-outline-success w-100">Registrar Producto</button>
             </form>
           </div>
         </div>
@@ -144,8 +144,8 @@ const Admin = () => {
               <img src={producto.imagen} alt={producto.nombre} style={{ width: "100px", height: "auto" }} />
             </div>
             <div>
-              <button className="btn btn-primary me-2" onClick={() => seleccionarProductoParaEditar(producto)}>Editar</button>
-              <button className="btn btn-danger" onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
+              <button className="btn btn-outline-primary me-2" onClick={() => seleccionarProductoParaEditar(producto)}>Editar</button>
+              <button className="btn btn-outline-danger" onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
             </div>
           </li>
         ))}
