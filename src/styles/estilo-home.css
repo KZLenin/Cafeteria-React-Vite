@@ -3,19 +3,14 @@ body {
     font-family:'Lucida Sans', 'Lucida Sans Regular';
 }
 
-
-.header-content{
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7)),
-        url(https://i.ibb.co/BCyygN3/cafe-frio.jpg) center bottom no-repeat;
-    background-size: cover;
-    background-position: center 25%;
-    
+/* Color al titulo general 'Bienvenidos' */ 
+.title-general {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color:rgb(255, 252, 163)
 }
 
-
-/* Estilos generales para la sección de café */
+/* Estilos generales para la sección de café y bebidas */
 
 .coffee {
     padding: 35px 0;
@@ -307,6 +302,7 @@ body {
   }
 
 
+
 /* SECCIÓN DESCARGA APP */
 .descarga-app {
     background-color: #f2e8dc00;
@@ -317,10 +313,9 @@ body {
   }
   
   .title-descarga {
-    color: #eeb186;
+    color: #d2bbaa;
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    line-height: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
@@ -368,7 +363,8 @@ body {
     box-sizing: border-box;
   }
   
-
+  
+  
   /* Efectos hover unificados */
   .descarga-botones a:hover {
     transform: translateY(-2px);
@@ -387,6 +383,7 @@ body {
     z-index: -1;
     transition: all 0.3s ease;
   }
+  
   
   
   /* Estilos responsivos para imágenes */
@@ -486,6 +483,11 @@ body {
     width: 30px;
     height: 30px;
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2); /* Efecto de zoom al pasar el cursor */
+    opacity: 0.8; /* Ligero efecto de transparencia */
 }
 
 .social-icon:hover {
