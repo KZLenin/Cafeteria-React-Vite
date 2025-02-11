@@ -61,7 +61,7 @@ p {
   display: flex;
   justify-content: center; /* Centrar horizontalmente */
   align-items: center; /* Centrar verticalmente */
-  background-color: #f5f5f5; /* Color de fondo */
+  background-color: #eedddd; /* Color de fondo */
   padding: 20px; /* Espacio interno para evitar que los elementos queden pegados a los bordes */
 }
 
@@ -86,7 +86,7 @@ p {
 .txt-parrafo {
   font-size: 18px;
   color: #111b30;
-  padding: 0 50px; /* Reducir padding lateral para evitar que se desborde */
+  padding: 0 25px; /* Reducir padding lateral para evitar que se desborde */
   text-align: center;
   margin-bottom: 35px;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
@@ -96,7 +96,7 @@ p {
 .coffee-group {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Espaciado entre divs */
+  gap: 30px; /* Espaciado entre divs */
   flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
   max-width: 1000px; /* Límite de ancho */
   margin: auto;
