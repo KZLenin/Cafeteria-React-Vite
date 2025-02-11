@@ -1,0 +1,409 @@
+/* Estilo global */
+
+body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular';
+    /*background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/30/5c/29/photo0jpg.jpg');*/
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fafafa;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10%;
+}
+
+/* Estilo global para el header */
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+}
+
+.abrir-menu,
+.cerrar-menu {
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .abrir-menu,
+    .cerrar-menu {
+        display: block;
+        border: 0;
+        font-size: 1.25rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .abrir-menu {
+        color: #ffffffd2;
+    }
+
+    .cerrar-menu {
+        color: #c8c8c8;
+    }
+
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #010101ae;
+        padding: 2rem;
+        box-shadow: 0 0 0 100vmax rgb(0, 0, 0, .5);
+    }
+
+    .nav.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .nav-listli a {
+        color: #c8c8c8;
+    }
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px;
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #fafafa;
+}
+
+/* Estilo de la sección reserva */
+
+.banner-image img {
+    display: block;
+    max-width: 350px; /* Reducir el tamaño máximo de la imagen */
+    width: 100%; /* Se ajusta al contenedor */
+    height: auto; /* Mantiene la proporción */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reserva {
+    text-align: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.reserva-contenido {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Alinea la imagen y el formulario */
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.texto {
+    flex: 1;
+    max-width: 600px;
+    text-align: center;
+}
+
+.texto h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.texto h3 {
+    font-size: 24px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.texto ul {
+    padding-left: 20px;
+}
+
+.texto ul li {
+    margin-bottom: 10px;
+}
+
+.parrafo-content {
+    text-align: auto;
+    padding: auto;
+}
+
+.foto-cafe {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Estilo de la sección reservas */
+.reservas-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: auto;
+}
+
+.reservas-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.reservas-image {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+}
+
+.reservas-image img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(8, 8, 8, 0.1);
+}
+
+.reservas-form {
+    min-width: auto;
+    max-width: auto; /* Ajustado para que haya espacio para la imagen */
+    text-align: center;
+    margin-left: 20px;
+    background-color: rgba(0, 0, 0, 0); /* Fondo oscuro translúcido */
+    border-radius: 10px;
+    padding: 30px 20px;
+}
+
+.reservas-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #c8c8c8;
+    text-align: center;
+}
+
+.reservas-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fffcfc;
+}
+
+.reservas-form input,
+.reservas-form textarea,
+.reservas-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    background: #ffffff3f;
+    color: #ffffff;
+}
+
+.reservas-form button {
+    background-color: #b75825;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+    font-size: 20px;
+}
+
+.reservas-form button:hover {
+    background-color: #ff9543;
+}
+
+/* Sección de pagos */
+.pago-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: rgba(255, 249, 220, 0);
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 35px;
+    margin-right: 35px;
+    border-radius: 10px;
+}
+
+.pago-title {
+    font-family: Verdana;
+    font-weight: bold;
+    color: rgb(195, 195, 195);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.pago-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+}
+
+.pago-p {
+    font-family: Verdana;
+    flex: 1;
+    min-width: 200px;
+    max-width: 30%;
+    text-align: center;
+    line-height: 1.5;
+    padding: 15px;
+    background-color: rgba(2, 2, 2, 0.589);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 5%;
+}
+
+@media (max-width: 768px) {
+    .pago-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pago-p {
+        max-width: 90%;
+        margin-bottom: 15px;
+    }
+}
+
+.pago-img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+}
+
+/* Estilo de opiniones */
+.opiniones {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.opiniones h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.opiniones-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.comentario {
+    background-color: rgba(199, 197, 197, 0.9);
+    color: #000;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    position: relative;
+    animation: aleatorio 10s infinite ease-in-out;
+}
+
+/* Animación de posicionamiento aleatorio */
+@keyframes aleatorio {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(10px, -15px);
+    }
+    50% {
+        transform: translate(-20px, 10px);
+    }
+    75% {
+        transform: translate(15px, -10px);
+    }
+}
+
+.comentario p {
+    margin: 0;
+}
+
+/* Estilo del footer */
+footer {
+    background: #00000097;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons img {
+    width: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
