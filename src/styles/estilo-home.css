@@ -87,10 +87,10 @@ p {
   font-size: 18px;
   color: #111b30;
   padding: 0 25px; /* Reducir padding lateral para evitar que se desborde */
-  text-align: center;
-  margin-bottom: 35px;
-  margin-right: 40px;
+  text-align: center; /* Centra el texto dentro del párrafo */
+  margin: 0 auto 35px; /* Centra el párrafo y aplica margen inferior */
   font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  max-width: 800px; /* Opcional: para limitar el ancho máximo y que el texto no sea demasiado ancho */
 }
 
 /* Grupo de divs: Flexbox para organizar elementos */
