@@ -467,13 +467,8 @@ p {
     text-align: center; /* Centrado del texto */
     padding: 20px 0; /* Espaciado arriba y abajo */
     font-family: Verdana;
-    display: flex;
-    justify-content: center; /* Centra contenido horizontalmente */
-    align-items: center; /* Centra contenido verticalmente */
     width: 100%; /* Asegura que el footer ocupe todo el ancho */
-    height: 100vh; /* Asegura que el footer tenga altura suficiente para centrar el contenido */
-    position: fixed;
-    bottom: 0; /* Coloca el footer en la parte inferior */
+    position: relative; /* Hace que el footer se coloque de forma normal en el flujo de la página */
 }
 
 /* Contenedor del footer */
