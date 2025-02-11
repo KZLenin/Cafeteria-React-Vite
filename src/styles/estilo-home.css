@@ -56,68 +56,92 @@ p {
 
 /* Hacer que la sección ocupe toda la pantalla */
 .coffee {
-  width: 100vw; /* Ocupar todo el ancho de la pantalla */
-  height: 100vh; /* Ocupar todo el alto de la pantalla */
+  width: 100vw;  /* Ocupa todo el ancho */
+  height: 100vh; /* Ocupa todo el alto */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f5f5; /* Puedes cambiar el color de fondo */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  background-color: #f5f5f5; /* Color de fondo */
+  padding: 20px; /* Espacio interno para evitar que los elementos queden pegados a los bordes */
 }
 
-/* Contenedor principal de la sección */
+/* Contenedor principal */
 .coffee-content {
-  width: 90%; /* Ajustar el ancho para que no sea demasiado grande */
-  max-width: 1200px; /* Limita el tamaño máximo */
+  width: 90%;
+  max-width: 1200px;
   text-align: center;
 }
 
+/* Estilo del título principal */
 .coffee-content h2 {
-    font-size: 45px;
-    line-height: 70px;
-    color: #bb5656; /* Color del título principal */
-    text-transform: uppercase;
-    padding: 0 150px;
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  line-height: 55px;
+  color: #bb5656; 
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/*Estilos para el parrafo general de las categorias */
+/* Estilo del párrafo */
 .txt-parrafo {
-    font-size: 21px;
-    color: #111b30; /* Color del párrafo principal */
-    padding: 0 250px;
-    text-align: center;
-    margin-bottom: 35px;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  color: #111b30;
+  padding: 0 50px; /* Reducir padding lateral para evitar que se desborde */
+  text-align: center;
+  margin-bottom: 35px;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
 }
 
-/* Grupo de divs: Separación y alineación */
+/* Grupo de divs: Flexbox para organizar elementos */
 .coffee-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px; /* Reducir espacio entre divs */
-    max-width: 1200px; /* Ancho máximo para los divs */
-    margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaciado entre divs */
+  flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
+  max-width: 1000px; /* Límite de ancho */
+  margin: auto;
 }
 
 /* Estilo para cada div */
 .coffee-1 {
-    position: relative; /* Posicionamiento del contenido interno */
-    width: 350px; /* Ancho fijo para un mejor diseño */
-    padding: auto;
-    overflow: hidden; /* Ocultar contenido que sobresalga */
-    border-radius: 10px;
-    background-color: #f6e2e2; /* Fondo de los divs */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex; /* Para centrar imagen y contenido */
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: space-between; /* Espaciar contenido */
+  width: 30%; /* Ocupa un tercio del espacio */
+  min-width: 300px; /* Tamaño mínimo para evitar que se deformen */
+  max-width: 350px; /* Tamaño máximo */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f6e2e2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between;
+  text-align: center;
 }
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .coffee-group {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .coffee-1 {
+      width: 90%; /* Para que ocupe más espacio en móviles */
+  }
+
+  .coffee-content h2 {
+      font-size: 32px; /* Reducimos el tamaño del título */
+  }
+
+  .txt-parrafo {
+      padding: 0 20px; /* Reducimos aún más en móviles */
+  }
+}
+
 
 /* Estilo para las imágenes */
 .coffee-1 img {
-    width: 350px; /* Ajustar tamaño */
+    width: 350px;
     height: 250px;
     object-fit: cover; /* Asegura que las imágenes no se deformen */
     border-radius: 5px; /* Bordes redondeados */
@@ -129,17 +153,13 @@ p {
     opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
 }
 
-/* Ajustar en pantallas pequeñas */
-@media (max-width: 768px) {
-  .coffee-group {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .coffee-1 {
-      width: 90%; /* Ocupa más espacio en pantallas pequeñas */
-  }
+/* Imágenes responsivas */
+.coffee-1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
+
 /* Títulos dentro de los divs */
 .coffee-1 .titulo-bebida {
     color: #772026; /* Color de los títulos */
