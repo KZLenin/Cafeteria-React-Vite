@@ -383,8 +383,7 @@ p {
     box-sizing: border-box;
   }
   
-  
-  
+
   /* Efectos hover unificados */
   .descarga-botones a:hover {
     transform: translateY(-2px);
@@ -464,7 +463,6 @@ p {
 
 /* Configuración del pie de página */
 .footer {
-    background-color: #170404; /* Fondo oscuro */
     color: white; /* Color del texto */
     text-align: center;
     padding: 20px 0; /* Espaciado arriba y abajo */
