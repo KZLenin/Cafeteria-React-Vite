@@ -12,10 +12,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { detectFace } from "../../utils/faceplusplus";
 
+// Inicializar Firebase Authentication y Firestore
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
 
 const RegisterForm = () => {
+  // Estado del formulario
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,15 +27,21 @@ const RegisterForm = () => {
     telefono: ""
   });
 
+  // Estados para la cámara y carga
   const [base64Image, setBase64Image] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
 
-  // Activar cámara al montar componente
+  // Activar cámara cuando el componente se monta
   useEffect(() => {
+    let streamRef;
+
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(stream => {
+        streamRef = stream;
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -41,8 +49,16 @@ const RegisterForm = () => {
       .catch(err => {
         alert("No se pudo acceder a la cámara: " + err.message);
       });
+
+    // Detener la cámara cuando el componente se desmonta
+    return () => {
+      if (streamRef) {
+        streamRef.getTracks().forEach(track => track.stop());
+      }
+    };
   }, []);
 
+  // Actualizar valores del formulario
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -50,6 +66,7 @@ const RegisterForm = () => {
     });
   };
 
+  // Captura una imagen del video y la convierte a base64
   const capturePhoto = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -65,6 +82,7 @@ const RegisterForm = () => {
     alert("Foto capturada correctamente");
   };
 
+  // Proceso de registro del usuario
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -79,9 +97,19 @@ const RegisterForm = () => {
     }
 
     try {
-      // Detectar rostro y obtener token
+      setLoading(true);
+
+      // Detectar rostro usando la imagen capturada
       const faceToken = await detectFace(base64Image);
 
+      // Validar si se detectó un rostro
+      if (!faceToken) {
+        alert("No se detectó ningún rostro. Intenta nuevamente con buena iluminación.");
+        setLoading(false);
+        return;
+      }
+
+      // Registrar usuario en Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         form.email,
@@ -89,7 +117,7 @@ const RegisterForm = () => {
       );
       const user = userCredential.user;
 
-      // Guardar en Firestore
+      // Guardar datos del usuario en Firestore
       await setDoc(doc(db, "usuarios", user.uid), {
         correo: form.email,
         nombre: form.nombre,
@@ -104,6 +132,8 @@ const RegisterForm = () => {
     } catch (error) {
       console.error("Error al registrar:", error.message);
       alert("Error: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -114,6 +144,7 @@ const RegisterForm = () => {
           <form onSubmit={handleRegister}>
             <h3 className="card-title text-center mb-4">Registro</h3>
 
+            {/* Campos del formulario */}
             <div className="mb-3">
               <label className="form-label">Correo Electrónico</label>
               <input
@@ -186,7 +217,7 @@ const RegisterForm = () => {
               />
             </div>
 
-            {/* Sección para capturar rostro */}
+            {/* Captura de rostro con cámara */}
             <div className="mb-3">
               <label className="form-label">Captura tu rostro</label>
               <video ref={videoRef} autoPlay className="w-100 rounded mb-2" />
@@ -198,15 +229,28 @@ const RegisterForm = () => {
                 Capturar rostro
               </button>
               <canvas ref={canvasRef} style={{ display: "none" }} />
+
+              {/* Mostrar miniatura del rostro capturado */}
+              {base64Image && (
+                <div className="mt-2 text-center">
+                  <img
+                    src={`data:image/jpeg;base64,${base64Image}`}
+                    alt="Rostro capturado"
+                    style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+                  />
+                  <p className="text-white">Rostro capturado</p>
+                </div>
+              )}
             </div>
 
-            <button type="submit" className="btn btn-outline-warning w-100 mb-2">
-              Registrarse
+            {/* Botones */}
+            <button type="submit" className="btn btn-outline-warning w-100 mb-2" disabled={loading}>
+              {loading ? "Registrando..." : "Registrarse"}
             </button>
 
             <button
               type="button"
-              className="btn btn-outline-warning w-100 mb-2"
+              className="btn btn-secondary w-100 mb-2"
               onClick={() => navigate("/")}
             >
               Regresar
