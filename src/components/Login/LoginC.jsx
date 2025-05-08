@@ -16,6 +16,8 @@ const LoginForm = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
+  
+  const CONFIDENCE_THRESHOLD = 85;  // Umbral de confianza para comparación de rostros
 
   // Activar cámara al montar
   useEffect(() => {
@@ -58,6 +60,11 @@ const LoginForm = () => {
     const correo = e.target.email.value;
     const password = e.target.password.value;
 
+    if (!correo || !password) {
+      alert("Por favor ingresa correo y contraseña.");
+      return;
+    }
+
     if (!base64Image) {
       alert("Por favor, captura tu rostro para continuar.");
       return;
@@ -78,14 +85,19 @@ const LoginForm = () => {
       // Detectar rostro actual
       const currentFaceToken = await detectFace(base64Image);
 
+      if (!currentFaceToken) {
+        alert("No se detectó ningún rostro en la imagen. Intenta nuevamente.");
+        return;
+      }
+
       // Comparar rostros
       const confidence = await compareFaces(storedFaceToken, base64Image);
 
-      if (confidence >= 85) {
-        alert("Autenticación facial exitosa.");
+      if (confidence >= CONFIDENCE_THRESHOLD) {
+        alert(`Autenticación facial exitosa. Confianza: ${confidence.toFixed(2)}%`);
         navigate("/");
       } else {
-        alert("El rostro no coincide. Intenta nuevamente.");
+        alert(`El rostro no coincide (Confianza: ${confidence.toFixed(2)}%). Intenta nuevamente.`);
         auth.signOut();
       }
 
@@ -173,4 +185,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
