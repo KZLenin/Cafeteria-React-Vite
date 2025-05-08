@@ -16,12 +16,8 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleAuth = () => {
-    if (usuario) {
-      signOut(auth);
-    } else {
-      window.location.href = "/login";
-    }
+  const handleLogout = () => {
+    signOut(auth);
   };
 
   return (
@@ -61,11 +57,26 @@ const Header = () => {
               <li className="nav-item">
                 <a className="nav-link" href="/reservas">Reservas</a>
               </li>
-              <li className="nav-item">
-                <button className="btn btn-auth" onClick={handleAuth}>
-                  {usuario ? "Cerrar sesión" : "Login"}
-                </button>
-              </li>
+              {usuario ? (
+                <li className="nav-item">
+                  <button className="btn btn-auth" onClick={handleLogout}>
+                    Cerrar sesión
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <button className="btn btn-auth" onClick={() => window.location.href = "/login"}>
+                      Iniciar sesión
+                    </button>
+                  </li>
+                  <li className="nav-item">
+                    <button className="btn btn-auth" onClick={() => window.location.href = "/register"}>
+                      Registrarse
+                    </button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
