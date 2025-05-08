@@ -1,13 +1,73 @@
+/* Variables globales en root para fácil manipulación */
+:root {
+  /* Tipografías */
+  --font-primary: Verdana, Geneva, Tahoma, sans-serif;
+  --font-secondary: 'Lucida Sans', 'Lucida Sans Regular';
+  --font-tertiary: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  --font-quaternary: Arial, Helvetica, sans-serif;
+  
+  /* Colores de texto */
+  --color-text-primary: #f7f3f3;
+  --color-text-secondary: #1f0f0f;
+  --color-text-accent: rgb(255, 252, 163);
+  --color-text-coffee: #111b30;
+  --color-text-coffee-title: #772026;
+  --color-text-video: rgb(231, 216, 216);
+  --color-text-video-title: #917471;
+  --color-text-app: #d2bbaa;
+  --color-text-app-desc: rgb(221, 211, 204);
+  
+  /* Colores de fondo */
+  --color-bg-coffee: #eedddd;
+  --color-bg-coffee-item: #f6e2e2;
+  --color-bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Colores de botones */
+  --color-btn-primary: #d9534f;
+  --color-btn-primary-hover: #c9302c;
+  --color-btn-shop: rgb(133, 42, 24);
+  --color-btn-shop-hover: rgb(167, 108, 66);
+  --color-btn-text: white;
+  --color-btn-shop-text: rgb(255, 223, 223);
+  
+  /* Tamaños de fuente */
+  --font-size-normal: 1.2rem;
+  --font-size-title: 40px;
+  --font-size-subtitle: 30px;
+  --font-size-paragraph: 18px;
+  --font-size-small: 15px;
+  
+  /* Espaciados */
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 30px;
+  
+  /* Bordes */
+  --border-radius-sm: 5px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 15px;
+  --border-radius-btn: 20px;
+  
+  /* Sombras */
+  --shadow-box: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-app: 0 8px 20px rgba(0, 0, 0, 0.15);
+  
+  /* Transiciones */
+  --transition-default: all 0.3s ease;
+}
 
 body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular';
+  font-family: var(--font-secondary);
+  margin: 0;
+  padding: 0;
 }
 
 .title-general {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color:rgb(255, 252, 163);
-  line-height: bold;
+  font-family: var(--font-primary);
+  color: var(--color-text-accent);
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -17,33 +77,35 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
+  padding: var(--spacing-md);
 }
 
 p {
-  font-size: 1.2rem;
-  color: #f7f3f3;
+  text-align: center;
+  font-size: var(--font-size-normal);
+  color: var(--color-text-primary);
   max-width: 600px;
-  margin-bottom: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-primary);
 }
 
+/* Estilos de botones */
 .boton-1 {
   display: inline-block;
-  background-color: #d9534f; /* Rojo */
-  color: white;
+  background-color: var(--color-btn-primary);
+  color: var(--color-btn-text);
   padding: 12px 24px;
-  font-size: 1.2rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: var(--font-size-normal);
+  font-family: var(--font-primary);
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .boton-1:hover {
-  background-color: #c9302c; /* Rojo más oscuro */
+  background-color: var(--color-btn-primary-hover);
   transform: scale(1.05);
 }
 
@@ -52,392 +114,653 @@ p {
   transform: scale(0.98);
 }
 
-/* Estilos generales para la sección de café y bebidas */
-
-/* Hacer que la sección ocupe toda la pantalla */
+/* SECCIÓN DE CAFÉ Y BEBIDAS */
 .coffee {
-  width: 100vw;  /* Ocupa todo el ancho */
-  height: 100vh; /* Ocupa todo el alto */
+  width: 100vw;
   display: flex;
-  justify-content: center; /* Centrar horizontalmente */
-  align-items: center; /* Centrar verticalmente */
-  background-color: #eedddd; /* Color de fondo */
-  padding: 20px; /* Espacio interno para evitar que los elementos queden pegados a los bordes */
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg-coffee);
+  padding: var(--spacing-md);
 }
 
-/* Contenedor principal */
 .coffee-content {
   width: 90%;
   max-width: 1200px;
   text-align: center;
 }
 
-/* Estilo del título principal */
 .coffee-content h2 {
-  font-size: 40px;
+
+  font-size: var(--font-size-title);
   line-height: 55px;
-  color: #bb5656; 
+  color: #bb5656;
   text-transform: uppercase;
   margin-bottom: 15px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-quaternary);
 }
 
-/* Estilo del párrafo */
 .txt-parrafo {
-  font-size: 18px;
-  color: #111b30;
-  padding: 0 25px; /* Reducir padding lateral para evitar que se desborde */
-  text-align: center; /* Centra el texto dentro del párrafo */
-  margin: 0 auto 35px; /* Centra el párrafo y aplica margen inferior */
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
-  max-width: 800px; /* Opcional: para limitar el ancho máximo y que el texto no sea demasiado ancho */
+  font-size: var(--font-size-paragraph);
+  color: var(--color-text-coffee);
+  padding: 0 25px;
+  text-align: center;
+  margin: 0 auto 35px;
+  font-family: var(--font-tertiary);
+  max-width: 800px;
 }
 
-/* Grupo de divs: Flexbox para organizar elementos */
 .coffee-group {
   display: flex;
-  justify-content: center;
-  gap: 30px; /* Espaciado entre divs */
-  flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
-  max-width: 1000px; /* Límite de ancho */
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  flex-wrap: nowrap;
+  max-width: 1000px;
   margin: auto;
 }
 
-/* Estilo para cada div */
+
 .coffee-1 {
-  width: 30%; /* Ocupa un tercio del espacio */
-  min-width: 300px; /* Tamaño mínimo para evitar que se deformen */
-  max-width: 350px; /* Tamaño máximo */
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f6e2e2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  min-width: 300px;
+  max-width: 350px;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-bg-coffee-item);
+  box-shadow: var(--shadow-box);
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
   text-align: center;
 }
 
-/* Media Query para pantallas pequeñas */
-@media (max-width: 768px) {
+.coffee-1 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  transition: var(--transition-default);
+}
+
+.coffee-1 img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.coffee-1 .titulo-bebida {
+  color: var(--color-text-coffee-title);
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-family: var(--font-primary);
+  text-align: center;
+  font-weight: bold;
+}
+
+.coffee-1 .texto-bebida {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  margin: 0;
+  font-family: var(--font-primary);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Media Query para sección coffee - después de línea 101 */
+@media (max-width: 767.98px) {
   .coffee-group {
       flex-direction: column;
       align-items: center;
   }
 
   .coffee-1 {
-      width: 90%; /* Para que ocupe más espacio en móviles */
+      width: 90%;
   }
 
   .coffee-content h2 {
-      font-size: 32px; /* Reducimos el tamaño del título */
+      font-size: 32px;
   }
 
   .txt-parrafo {
-      padding: 0 20px; /* Reducimos aún más en móviles */
+      padding: 0 20px;
   }
 }
 
-
-/* Estilo para las imágenes */
-.coffee-1 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que las imágenes no se deformen */
-    border-radius: 5px; /* Bordes redondeados */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición */
+@media (max-width: 399.98px) {
+  .coffee-group {
+      gap: 15px;
+  }
+  
+  .coffee-content h2 {
+      font-size: 24px;
+      line-height: 1.3;
+  }
+  
+  .txt-parrafo {
+      font-size: 14px;
+      padding: 0 15px;
+      margin-bottom: 20px;
+  }
 }
 
-.coffee-1 img:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-    opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+@media (max-width: 320px) {
+  .coffee-content h2 {
+      font-size: 22px;
+  }
 }
 
-/* Imágenes responsivas */
-.coffee-1 img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Títulos dentro de los divs */
-.coffee-1 .titulo-bebida {
-    color: #772026; /* Color de los títulos */
-    font-size: 20px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-family: Verdana;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Texto dentro de los divs */
-.coffee-1 .texto-bebida {
-    color: #1f0f0f;
-    font-size: 15px;
-    margin: 0; /* Eliminar márgenes extra que puedan desplazar el texto */
-    font-family: Verdana;
-    text-align: center;
-    display: flex; /* Utiliza flexbox para centrar el texto verticalmente */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente si es necesario */
-    height: 100%; /* Asegura que el texto se distribuya correctamente dentro del contenedor */
-}
-
-/* Configuración del video que aparecerá dentro del index.html */
-/* La sección que contiene el video y el texto */
+/* SECCIÓN DE VIDEO */
 .video-section {
-    position: relative;  /* Necesario para poder posicionar el texto sobre el video */
-    height: 100vh;  /* Establece la altura de la sección al 100% de la ventana */
-    width: 100%;  /* Establece el ancho de la sección al 100% de la ventana */
-    overflow: hidden;  /* Asegura que el video no se desborde si cambia su tamaño */
-    margin: 0%;  /* Elimina el relleno predeterminado */
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin: 0%;
 }
 
-/* El video como fondo */
 .video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;  /* Asegura que el video esté detrás de todo */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .video-container::before {
-    content: '';  /* Crea una capa vacía */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);  /* Fondo negro con opacidad */
-    z-index: 1;  /* Pone la capa oscura encima del video */
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-overlay);
+  z-index: 1;
 }
 
 .video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;  /* Asegura que el video esté debajo de la capa oscura */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-/* Estilo para el título */
 .video-title {
-    position: absolute;
-    top: 40%;  /* Coloca el título ligeramente más arriba */
-    left: 50%;
-    transform: translate(-50%, -50%);  /* Centra el título */
-    color: #917471;  /* Color dorado para el título */
-    font-size: 40px;  /* Tamaño de fuente para el título */
-    font-family: verdana;
-    text-align: center;
-    z-index: 2;  /* Asegura que el título quede encima de todo */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-video-title);
+  font-size: var(--font-size-title);
+  font-family: var(--font-primary);
+  text-align: center;
+  z-index: 2;
 }
 
-/* Estilo para la descripción */
 .video-description {
-    position: absolute;
-    top: 55%;  /* Coloca la descripción un poco más abajo que el título */
-    left: 50%;
-    margin-top: 20px;
-    transform: translate(-50%, -50%);  /* Centra la descripción */
-    color: rgb(231, 216, 216);  /* Color blanco para la descripción */
-    font-size: 23px;  /* Tamaño de fuente para la descripción */
-    text-align: center;
-    font-family: Verdana;
-    z-index: 2;  /* Asegura que la descripción quede encima de la capa oscura */
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-top: var(--spacing-md);
+  transform: translate(-50%, -50%);
+  color: var(--color-text-video);
+  font-size: 23px;
+  text-align: center;
+  font-family: var(--font-primary);
+  z-index: 2;
 }
 
-/* Configuracion de la seccion */
+/* Media Query para sección video - después de línea 190 */
+@media (max-width: 767.98px) {
+  .video-title {
+      font-size: 30px;
+      width: 90%;
+  }
+  
+  .video-description {
+      font-size: 18px;
+      width: 90%;
+  }
+}
 
-/* Eliminar márgenes fijos y ajustar disposición */
-/* Sección general de la tienda */
+@media (max-width: 575.98px) {
+  .video-title {
+      font-size: 26px;
+      top: 35%;
+  }
+  
+  .video-description {
+      font-size: 16px;
+      top: 60%;
+      width: 95%;
+  }
+}
+
+@media (max-width: 320px) {
+  .video-title {
+      font-size: 20px;
+      top: 30%;
+  }
+  
+  .video-description {
+      font-size: 14px;
+      top: 65%;
+  }
+}
+
+/* SECCIÓN DE TIENDA */
 .shop {
-    background: linear-gradient(
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg) center bottom no-repeat;
-    background-size: cover;
-    background-position: center 20%;
-    margin: 0;
-    min-height: 90vh;
-    padding: 20px 0;  /* Espaciado interior */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Título de la tienda */
+  background: linear-gradient(
+      var(--color-bg-overlay),
+      var(--color-bg-overlay)
+  ),
+  url(https://png.pngtree.com/background/20230519/original/pngtree-an-old-coffee-shop-with-very-dark-walls-picture-image_2652909.jpg) center bottom no-repeat;
+  background-size: cover;
+  background-position: center 20%;
+  margin: 0;
+  min-height: 90vh;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-shop {
+  padding-top: 40px;
+  text-align: center;
+  font-family: var(--font-quaternary);
+  color: var(--color-text-accent);
+  font-size: var(--font-size-subtitle);
+}
+
+.shop-content1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.shop-img {
+  order: 2;
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: var(--border-radius-xl);
+}
+
+.parrafo-shop {
+  order: 1;
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.boton-2 {
+  order: 3;
+  margin: 20px auto;
+  display: inline-block;
+  padding: 11px 25px;
+  background-color: var(--color-btn-shop);
+  color: var(--color-btn-shop-text);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  border-color: #17040400;
+  border-radius: var(--border-radius-btn);
+  font-size: var(--font-size-paragraph);
+  width: fit-content;
+  text-align: center;
+}
+
+.boton-2:hover {
+  background-color: var(--color-btn-shop-hover);
+}
+
+/* Media Query para sección shop - después de línea 257 */
+@media (max-width: 767.98px) {
   .title-shop {
-    padding-top: 40px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(255, 252, 163);
-    font-size: 30px;
-  }
-  
-  /* Contenedor de los elementos de la primera sección */
-  .shop-content1 {
-    display: flex;
-    flex-direction: column; /* Apila elementos verticalmente */
-    align-items: center;
-    margin: 0 auto;
-    max-width: 1200px;
-    text-align: center;
+      font-size: 26px;
+      padding-top: 20px;
   }
   
   .shop-img {
-    order: 2; /* Posiciona la imagen después del párrafo */
-    width: 80%;
-    max-width: 600px;
-    height: auto;
-    margin: 20px 0;
-    border-radius: 15px;
-
+      width: 90%;
   }
   
   .parrafo-shop {
-    order: 1; /* Posiciona el párrafo primero */
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
+      width: 90%;
+      font-size: 16px;
   }
   
   .boton-2 {
-    order: 3; /* Posiciona el botón después de la imagen */
-    margin: 20px auto;
-    display: inline-block;
-    padding: 11px 25px;
-    background-color: rgb(133, 42, 24);
-    color: rgb(255, 223, 223);
-    text-transform: uppercase;
-    text-decoration: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-color: #17040400;
-    border-radius: 20px;
-    font-size: 18px;
-    width: fit-content;
-    text-align: center;
+      font-size: 16px;
+      padding: 10px 20px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .title-shop {
+      font-size: 24px;
   }
   
-  .boton-2:hover {
-    background-color: rgb(167, 108, 66);
+  .shop-img {
+      width: 95%;
   }
+  
+  .parrafo-shop {
+      width: 95%;
+  }
+}
+
+@media (max-width: 320px) {
+  .title-shop {
+      font-size: 20px;
+  }
+  
+  .parrafo-shop {
+      font-size: 14px;
+  }
+  
+  .boton-2 {
+      font-size: 14px;
+      padding: 8px 15px;
+  }
+}
 
 /* SECCIÓN DESCARGA APP */
 .descarga-app {
-    background-color: #f2e8dc00;
-    margin-bottom: 15px;
-    margin-top: 0px !important;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .fw-bold {
-    color: #d2bbaa;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
+  background-color: #f2e8dc00;
+  margin-bottom: 15px;
+  margin-top: 0px !important;
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+.fw-bold {
+  color: var(--color-text-app);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: var(--font-primary);
+}
 
 .lead {
-    text-align: center; /* Centra el texto */
-    margin-top: 10px;
-    font-size: 22px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0 auto; /* Esto asegura que el elemento esté centrado en su contenedor */
-    padding-bottom: 15px;
-    line-height: 1.5;
-    color: rgb(221, 211, 204);
-    width: fit-content; /* O puede ser un ancho específico si es necesario */
+  text-align: center;
+  margin-top: 10px;
+  font-size: 22px;
+  font-family: var(--font-quaternary);
+  margin: 0 auto;
+  padding-bottom: 15px;
+  line-height: 1.5;
+  color: var(--color-text-app-desc);
+  width: fit-content;
 }
-  
-  /* Contenedores para botones de descarga */
-    .descarga-botones a {
-    display: inline-block;
-    width: 200px; 
-    height: 75px;
-    overflow: hidden;
-    border-radius: 12px;
-    position: relative;
-    background: rgba(255, 255, 255, 0); /* Fondo uniforme */
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-    margin: 0 25px; /* Espacio entre botones */
-  }
-  
-  /* Asegurar misma altura y alineación vertical */
-  .descarga-botones {
-    display: flex;
-    align-items: center; /* Alineación vertical perfecta */
-    justify-content: center;
-  } 
 
-  /* Efecto hover para la imagen */
+.descarga-botones a {
+  display: inline-block;
+  width: 200px;
+  height: 75px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+  background: rgba(255, 255, 255, 0);
+  transition: var(--transition-default);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-box);
+  margin: 0 25px;
+}
+
+.descarga-botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .img-fluid {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: var(--transition-default);
 }
 
 .img-fluid:hover {
-  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-  opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
-  /* Estilos responsivos para imágenes */
-  .app-img {
-    width: 800px;
-    height: auto;
-    border-radius: 15px;
-    margin: 2rem auto;
-    object-fit: cover; /* Asegura que las imágenes no se deformen */
-    border-radius: 10px; /* Bordes redondeados */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.app-img {
+  width: 800px;
+  height: auto;
+  border-radius: var(--border-radius-xl);
+  margin: 2rem auto;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  transition: var(--transition-default);
+  box-shadow: var(--shadow-app);
+}
+
+.app-img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Media Query para sección descarga-app - después de línea 321 */
+@media (max-width: 767.98px) {
+  .descarga-app {
+      padding: 2rem 1rem;
   }
   
-  .app-img:hover {
-    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
-    opacity: 0.9; /* Hace que la imagen sea un poco más opaca */
+  .fw-bold {
+      font-size: 2rem;
   }
 
-  /* Mobile First */
-  @media (max-width: 768px) {
-    .descarga-app {
-      padding: 2rem 1rem;
-    }
-    
-    .title-descarga {
-      font-size: 2rem;
-    }
-  
-    .descarga-botones {
+  .descarga-botones {
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-    }
-  
-    .app-store-btn,
-    .google-play-btn {
+  }
+
+  .app-store-btn,
+  .google-play-btn {
       width: 180px;
-    }
-  
-    .app-img {
+  }
+
+  .app-img {
       margin: 1rem auto;
       max-width: 95%;
-    }
   }
-  
-  @media (max-width: 480px) {
-    .descarga-description {
+}
+
+@media (max-width: 575.98px) {
+  .lead {
       font-size: 1.1rem;
       padding: 0 1rem;
-    }
-    
-    .app-store-btn,
-    .google-play-btn {
-      width: 160px;
-    }
   }
+  
+  .app-store-btn,
+  .google-play-btn {
+      width: 160px;
+  }
+  
+  .fw-bold {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+  }
+  
+  .app-img {
+      border-radius: 8px;
+  }
+}
+
+@media (max-width: 399.98px) {
+  .lead {
+      font-size: 0.95rem;
+  }
+  
+  .fw-bold {
+      font-size: 1.6rem;
+  }
+  
+  .descarga-botones a {
+      width: 150px;
+      height: 65px;
+      margin: 0 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .descarga-app {
+      padding: 1.5rem 0.75rem;
+  }
+  
+  .fw-bold {
+      font-size: 1.4rem;
+  }
+  
+  .lead {
+      font-size: 0.9rem;
+      padding: 0 0.5rem;
+  }
+}
+
+/* Media Queries generales para diferentes dispositivos */
+
+/* Dispositivos grandes (escritorios, menos de 1200px) */
+@media (max-width: 1199.98px) {
+  :root {
+      --font-size-title: 36px;
+      --font-size-subtitle: 28px;
+  }
+  
+  .coffee-content {
+      width: 95%;
+  }
+  
+  .app-img {
+      width: 90%;
+      max-width: 700px;
+  }
+}
+
+/* Dispositivos medianos (tablets, menos de 992px) */
+@media (max-width: 991.98px) {
+  :root {
+      --font-size-title: 32px;
+      --font-size-subtitle: 26px;
+      --font-size-paragraph: 17px;
+  }
+  
+  .coffee {
+      height: auto;
+      min-height: 100vh;
+  }
+  
+  .coffee-1 {
+      width: 45%;
+      min-width: 280px;
+  }
+}
+
+/* Dispositivos pequeños (tablets pequeñas y teléfonos grandes, menos de 768px) */
+@media (max-width: 767.98px) {
+  :root {
+      --font-size-title: 30px;
+      --font-size-subtitle: 24px;
+      --font-size-paragraph: 16px;
+      --spacing-md: 15px;
+  }
+}
+
+/* Dispositivos muy pequeños (teléfonos, menos de 576px) */
+@media (max-width: 575.98px) {
+  :root {
+      --font-size-title: 28px;
+      --font-size-subtitle: 22px;
+      --font-size-paragraph: 15px;
+      --font-size-small: 14px;
+  }
+  
+  .coffee {
+      padding: 40px 10px;
+  }
+  
+  .video-section {
+      height: 80vh;
+  }
+  
+  .video-title {
+      font-size: 24px;
+  }
+  
+  .video-description {
+      font-size: 16px;
+  }
+}
+
+/* Dispositivos extra pequeños (teléfonos pequeños, menos de 400px) */
+@media (max-width: 399.98px) {
+  :root {
+      --font-size-title: 24px;
+      --font-size-subtitle: 20px;
+      --spacing-sm: 8px;
+      --spacing-md: 12px;
+      --spacing-lg: 20px;
+  }
+  
+  body {
+      font-size: 14px;
+  }
+  
+  .coffee-1 {
+      min-width: 250px;
+      padding: 15px;
+  }
+  
+  .boton-1, .boton-2 {
+      padding: 10px 15px;
+      font-size: 14px;
+  }
+  
+  .fw-bold {
+      font-size: 1.8rem;
+  }
+  
+  .lead {
+      font-size: 16px;
+  }
+}
+
+/* Dispositivos muy extra pequeños (320px y menos) */
+@media (max-width: 320px) {
+  :root {
+      --font-size-title: 22px;
+      --font-size-subtitle: 18px;
+      --font-size-paragraph: 14px;
+      --font-size-small: 13px;
+  }
+  
+  .coffee-1 {
+      min-width: 220px;
+      padding: 10px;
+  }
+  
+  .coffee-1 .titulo-bebida {
+      font-size: 16px;
+  }
+  
+  .descarga-botones a {
+      width: 160px;
+      height: 60px;
+      margin: 0 10px;
+  }
+  
+  .video-title {
+      font-size: 20px;
+  }
+  
+  .video-description {
+      font-size: 14px;
+  }
+}

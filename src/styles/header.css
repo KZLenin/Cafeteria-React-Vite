@@ -62,7 +62,8 @@
 }
 
 .navbar-toggler {
-    border-color: white !important;
+    color: white;
+    border-color: white;
   }
   
   .navbar-toggler-icon {
@@ -96,7 +97,7 @@
     }
 
     .navbar-toggler {
-        
+        color: white;    
         border: none;
     }
 
