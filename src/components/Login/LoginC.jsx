@@ -4,27 +4,26 @@ import {
   getAuth,
   signInWithEmailAndPassword
 } from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  getDoc
-} from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { compareFaces } from "../../utils/faceplusplus";
+import { detectFace, compareFaces } from "../../utils/faceplusplus";
 
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
 
 const LoginForm = () => {
   const [base64Image, setBase64Image] = useState(null);
-  const [registrando, setRegistrando] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
 
+  // Activar cámara al montar
   useEffect(() => {
+    let streamRef;
+
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(stream => {
+        streamRef = stream;
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -32,6 +31,12 @@ const LoginForm = () => {
       .catch(err => {
         alert("No se pudo acceder a la cámara: " + err.message);
       });
+
+    return () => {
+      if (streamRef) {
+        streamRef.getTracks().forEach(track => track.stop());
+      }
+    };
   }, []);
 
   const capturePhoto = () => {
@@ -41,7 +46,6 @@ const LoginForm = () => {
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imageData = canvas.toDataURL("image/jpeg").split(",")[1];
@@ -49,43 +53,44 @@ const LoginForm = () => {
     alert("Foto capturada correctamente");
   };
 
-  const functAutenticacion = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const correo = e.target.email.value;
-    const contraseña = e.target.password.value;
+    const password = e.target.password.value;
+
+    if (!base64Image) {
+      alert("Por favor, captura tu rostro para continuar.");
+      return;
+    }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, correo, contraseña);
+      // Iniciar sesión con Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, correo, password);
       const user = userCredential.user;
 
+      // Obtener face_token de Firestore
       const userDoc = await getDoc(doc(db, "usuarios", user.uid));
-      if (!userDoc.exists()) throw new Error("Usuario no registrado en la base de datos");
+      if (!userDoc.exists()) throw new Error("Usuario no registrado correctamente.");
 
-      const userData = userDoc.data();
+      const storedFaceToken = userDoc.data().face_token;
+      if (!storedFaceToken) throw new Error("Este usuario no tiene un rostro registrado.");
 
-      if (!userData.face_token) {
-        alert("Este usuario no tiene rostro registrado. Contacta con soporte.");
-        return;
-      }
+      // Detectar rostro actual
+      const currentFaceToken = await detectFace(base64Image);
 
-      if (!base64Image) {
-        alert("Captura una foto para la verificación facial.");
-        return;
-      }
-
-      const confidence = await compareFaces(userData.face_token, base64Image);
-      console.log("Confidence:", confidence);
+      // Comparar rostros
+      const confidence = await compareFaces(storedFaceToken, base64Image);
 
       if (confidence >= 85) {
-        alert("Acceso concedido. Bienvenido.");
+        alert("Autenticación facial exitosa.");
         navigate("/");
       } else {
-        alert("La verificación facial falló. Inténtalo de nuevo.");
-        auth.signOut(); // cerrar sesión por seguridad
+        alert("El rostro no coincide. Intenta nuevamente.");
+        auth.signOut();
       }
 
     } catch (error) {
-      console.error("Error en la autenticación:", error.message);
+      console.error("Error al iniciar sesión:", error.message);
       alert("Error: " + error.message);
     }
   };
@@ -94,7 +99,7 @@ const LoginForm = () => {
     <div className="login-background">
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="card shadow-lg login-card p-4">
-          <form onSubmit={functAutenticacion}>
+          <form onSubmit={handleLogin}>
             <h3 className="card-title text-center mb-4">Iniciar Sesión</h3>
 
             <div className="mb-3">
@@ -119,6 +124,7 @@ const LoginForm = () => {
               />
             </div>
 
+            {/* Captura de rostro */}
             <div className="mb-3">
               <label className="form-label">Captura tu rostro</label>
               <video ref={videoRef} autoPlay className="w-100 rounded mb-2" />
@@ -138,7 +144,7 @@ const LoginForm = () => {
 
             <button
               type="button"
-              className="btn btn-secondary w-100"
+              className="btn btn-secondary w-100 mb-2"
               onClick={() => navigate("/")}
             >
               Regresar

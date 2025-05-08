@@ -32,8 +32,11 @@ const RegisterForm = () => {
 
   // Activar cámara al montar componente
   useEffect(() => {
+    let streamRef;
+  
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(stream => {
+        streamRef = stream;
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
@@ -41,6 +44,13 @@ const RegisterForm = () => {
       .catch(err => {
         alert("No se pudo acceder a la cámara: " + err.message);
       });
+  
+    // Al desmontar, detener la cámara
+    return () => {
+      if (streamRef) {
+        streamRef.getTracks().forEach(track => track.stop());
+      }
+    };
   }, []);
 
   const handleChange = (e) => {
