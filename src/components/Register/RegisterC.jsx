@@ -156,7 +156,7 @@ const RegisterForm = () => {
 
             <div className="text-center mt-3">
               <small>
-                ¿No tienes cuenta?{" "}
+                ¿Ya tienes cuenta ?{" "}
                 <a
                   href="#"
                   onClick={(e) => {
@@ -165,7 +165,7 @@ const RegisterForm = () => {
                   }}
                   className="text-warning"
                 >
-                  Regístrate
+                  Inicia sesión
                 </a>
               </small>
             </div>
