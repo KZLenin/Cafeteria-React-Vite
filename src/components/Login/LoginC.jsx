@@ -16,7 +16,7 @@ const LoginForm = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
-  
+
   const CONFIDENCE_THRESHOLD = 85;
 
   useEffect(() => {
@@ -74,30 +74,38 @@ const LoginForm = () => {
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, correo, password);
-      const user = userCredential.user;
+      // Obtener UID del usuario por su correo
+      const loginUser = await signInWithEmailAndPassword(auth, correo, password);
+      const user = loginUser.user;
 
       const userDoc = await getDoc(doc(db, "usuarios", user.uid));
-      if (!userDoc.exists()) throw new Error("Usuario no registrado correctamente.");
+      if (!userDoc.exists()) {
+        throw new Error("Usuario no registrado correctamente.");
+      }
 
       const storedFaceToken = userDoc.data().face_token;
-      if (!storedFaceToken) throw new Error("Este usuario no tiene un rostro registrado.");
+      if (!storedFaceToken) {
+        throw new Error("Este usuario no tiene un rostro registrado.");
+      }
 
+      // Detectar rostro actual
       const currentFaceToken = await detectFace(base64Image);
 
       if (!currentFaceToken) {
         alert("No se detectó ningún rostro en la imagen. Intenta nuevamente.");
+        await auth.signOut(); // Aseguramos que no quede la sesión activa
         return;
       }
 
+      // Comparar rostros
       const confidence = await compareFaces(storedFaceToken, base64Image);
 
       if (confidence !== null && confidence >= CONFIDENCE_THRESHOLD) {
         alert(`Autenticación facial exitosa. Confianza: ${confidence.toFixed(2)}%`);
         navigate("/");
       } else {
+        await auth.signOut(); // Cerrar sesión si no coincide
         alert(`El rostro no coincide (Confianza: ${confidence?.toFixed(2) || 0}%). Intenta nuevamente.`);
-        auth.signOut();
       }
 
     } catch (error) {
