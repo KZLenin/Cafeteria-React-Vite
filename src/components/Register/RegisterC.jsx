@@ -12,12 +12,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { detectFace } from "../../utils/faceplusplus";
 
-// Inicializar Firebase Authentication y Firestore
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
 
 const RegisterForm = () => {
-  // Estado del formulario
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -27,15 +25,12 @@ const RegisterForm = () => {
     telefono: ""
   });
 
-  // Estados para la cámara y carga
   const [base64Image, setBase64Image] = useState(null);
   const [loading, setLoading] = useState(false);
-
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const navigate = useNavigate();
 
-  // Activar cámara cuando el componente se monta
   useEffect(() => {
     let streamRef;
 
@@ -50,15 +45,16 @@ const RegisterForm = () => {
         alert("No se pudo acceder a la cámara: " + err.message);
       });
 
-    // Detener la cámara cuando el componente se desmonta
     return () => {
       if (streamRef) {
         streamRef.getTracks().forEach(track => track.stop());
       }
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
+      }
     };
   }, []);
 
-  // Actualizar valores del formulario
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -66,7 +62,6 @@ const RegisterForm = () => {
     });
   };
 
-  // Captura una imagen del video y la convierte a base64
   const capturePhoto = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -74,7 +69,6 @@ const RegisterForm = () => {
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imageData = canvas.toDataURL("image/jpeg").split(",")[1];
@@ -82,7 +76,6 @@ const RegisterForm = () => {
     alert("Foto capturada correctamente");
   };
 
-  // Proceso de registro del usuario
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -99,17 +92,14 @@ const RegisterForm = () => {
     try {
       setLoading(true);
 
-      // Detectar rostro usando la imagen capturada
       const faceToken = await detectFace(base64Image);
 
-      // Validar si se detectó un rostro
       if (!faceToken) {
         alert("No se detectó ningún rostro. Intenta nuevamente con buena iluminación.");
         setLoading(false);
         return;
       }
 
-      // Registrar usuario en Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         form.email,
@@ -117,7 +107,6 @@ const RegisterForm = () => {
       );
       const user = userCredential.user;
 
-      // Guardar datos del usuario en Firestore
       await setDoc(doc(db, "usuarios", user.uid), {
         correo: form.email,
         nombre: form.nombre,
@@ -145,79 +134,34 @@ const RegisterForm = () => {
             <h3 className="card-title text-center mb-4">Registro</h3>
 
             {/* Campos del formulario */}
-            <div className="mb-3">
-              <label className="form-label">Correo Electrónico</label>
-              <input
-                type="email"
-                name="email"
-                className="form-control bg-dark text-white border-light"
-                placeholder="usuario@ejemplo.com"
-                required
-                onChange={handleChange}
-              />
-            </div>
+            {["email", "password", "confirmPassword", "nombre", "apellido", "telefono"].map((field, index) => (
+              <div className="mb-3" key={index}>
+                <label className="form-label">
+                  {field === "email" ? "Correo Electrónico" :
+                   field === "password" ? "Contraseña" :
+                   field === "confirmPassword" ? "Confirmar Contraseña" :
+                   field === "nombre" ? "Nombre" :
+                   field === "apellido" ? "Apellido" :
+                   "Número de Teléfono"}
+                </label>
+                <input
+                  type={field.includes("password") ? "password" : field === "email" ? "email" : field === "telefono" ? "tel" : "text"}
+                  name={field}
+                  className="form-control bg-dark text-white border-light"
+                  placeholder={
+                    field === "email" ? "usuario@ejemplo.com" :
+                    field === "password" ? "Ingresa tu contraseña" :
+                    field === "confirmPassword" ? "Confirma tu contraseña" :
+                    field === "telefono" ? "Ej. 5551234567" :
+                    `Tu ${field}`
+                  }
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            ))}
 
-            <div className="mb-3">
-              <label className="form-label">Contraseña</label>
-              <input
-                type="password"
-                name="password"
-                className="form-control bg-dark text-white border-light"
-                placeholder="Ingresa tu contraseña"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Confirmar Contraseña</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                className="form-control bg-dark text-white border-light"
-                placeholder="Confirma tu contraseña"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Nombre</label>
-              <input
-                type="text"
-                name="nombre"
-                className="form-control bg-dark text-white border-light"
-                placeholder="Tu nombre"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Apellido</label>
-              <input
-                type="text"
-                name="apellido"
-                className="form-control bg-dark text-white border-light"
-                placeholder="Tu apellido"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Número de Teléfono</label>
-              <input
-                type="tel"
-                name="telefono"
-                className="form-control bg-dark text-white border-light"
-                placeholder="Ej. 5551234567"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Captura de rostro con cámara */}
+            {/* Captura de rostro */}
             <div className="mb-3">
               <label className="form-label">Captura tu rostro</label>
               <video ref={videoRef} autoPlay className="w-100 rounded mb-2" />
@@ -229,8 +173,6 @@ const RegisterForm = () => {
                 Capturar rostro
               </button>
               <canvas ref={canvasRef} style={{ display: "none" }} />
-
-              {/* Mostrar miniatura del rostro capturado */}
               {base64Image && (
                 <div className="mt-2 text-center">
                   <img
@@ -243,7 +185,6 @@ const RegisterForm = () => {
               )}
             </div>
 
-            {/* Botones */}
             <button type="submit" className="btn btn-outline-warning w-100 mb-2" disabled={loading}>
               {loading ? "Registrando..." : "Registrarse"}
             </button>
@@ -279,3 +220,4 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
+

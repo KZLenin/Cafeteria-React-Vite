@@ -17,9 +17,8 @@ const LoginForm = () => {
   const canvasRef = useRef(null);
   const navigate = useNavigate();
   
-  const CONFIDENCE_THRESHOLD = 85;  // Umbral de confianza para comparación de rostros
+  const CONFIDENCE_THRESHOLD = 85;
 
-  // Activar cámara al montar
   useEffect(() => {
     let streamRef;
 
@@ -34,9 +33,13 @@ const LoginForm = () => {
         alert("No se pudo acceder a la cámara: " + err.message);
       });
 
+    // Limpiar stream de cámara al desmontar
     return () => {
       if (streamRef) {
         streamRef.getTracks().forEach(track => track.stop());
+      }
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
       }
     };
   }, []);
@@ -71,18 +74,15 @@ const LoginForm = () => {
     }
 
     try {
-      // Iniciar sesión con Firebase
       const userCredential = await signInWithEmailAndPassword(auth, correo, password);
       const user = userCredential.user;
 
-      // Obtener face_token de Firestore
       const userDoc = await getDoc(doc(db, "usuarios", user.uid));
       if (!userDoc.exists()) throw new Error("Usuario no registrado correctamente.");
 
       const storedFaceToken = userDoc.data().face_token;
       if (!storedFaceToken) throw new Error("Este usuario no tiene un rostro registrado.");
 
-      // Detectar rostro actual
       const currentFaceToken = await detectFace(base64Image);
 
       if (!currentFaceToken) {
@@ -90,14 +90,13 @@ const LoginForm = () => {
         return;
       }
 
-      // Comparar rostros
       const confidence = await compareFaces(storedFaceToken, base64Image);
 
-      if (confidence >= CONFIDENCE_THRESHOLD) {
+      if (confidence !== null && confidence >= CONFIDENCE_THRESHOLD) {
         alert(`Autenticación facial exitosa. Confianza: ${confidence.toFixed(2)}%`);
         navigate("/");
       } else {
-        alert(`El rostro no coincide (Confianza: ${confidence.toFixed(2)}%). Intenta nuevamente.`);
+        alert(`El rostro no coincide (Confianza: ${confidence?.toFixed(2) || 0}%). Intenta nuevamente.`);
         auth.signOut();
       }
 
@@ -136,7 +135,6 @@ const LoginForm = () => {
               />
             </div>
 
-            {/* Captura de rostro */}
             <div className="mb-3">
               <label className="form-label">Captura tu rostro</label>
               <video ref={videoRef} autoPlay className="w-100 rounded mb-2" />
@@ -185,3 +183,4 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+

@@ -10,32 +10,28 @@ const COMPARE_URL = "https://api-us.faceplusplus.com/facepp/v3/compare";
 
 /**
  * ✅ detectFace
- * Envía una imagen en base64 a Face++ para detectar el rostro y obtener el face_token.
- * 
- * @param {string} base64Image - Imagen en base64 (sin encabezado `data:image/jpeg;base64,`)
- * @returns {string|null} face_token si se detecta, null si no
  */
 export const detectFace = async (base64Image) => {
   try {
-    const response = await axios.post(DETECT_URL, null, {
-      params: {
-        api_key: API_KEY,
-        api_secret: API_SECRET,
-        image_base64: base64Image,
-        return_attributes: "none"
+    const formData = new FormData();
+    formData.append("api_key", API_KEY);
+    formData.append("api_secret", API_SECRET);
+    formData.append("image_base64", base64Image);
+
+    const response = await axios.post(DETECT_URL, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
       }
     });
 
     const faces = response.data.faces;
 
-    // Validamos que haya al menos un rostro detectado
     if (faces && faces.length > 0) {
-      return faces[0].face_token; // Retornamos el primer rostro detectado
+      return faces[0].face_token;
     } else {
       console.warn("No se detectó ningún rostro.");
       return null;
     }
-
   } catch (error) {
     console.error("Error en detectFace:", error.response?.data || error.message);
     return null;
@@ -44,26 +40,22 @@ export const detectFace = async (base64Image) => {
 
 /**
  * ✅ compareFaces
- * Compara un face_token ya registrado con una imagen base64 actual usando Face++.
- *
- * @param {string} storedFaceToken - face_token almacenado en la base de datos
- * @param {string} base64Image - Imagen actual capturada en base64
- * @returns {number|null} Nivel de confianza (confidence) si se compara correctamente, null si no
  */
 export const compareFaces = async (storedFaceToken, base64Image) => {
   try {
-    const response = await axios.post(COMPARE_URL, null, {
-      params: {
-        api_key: API_KEY,
-        api_secret: API_SECRET,
-        face_token1: storedFaceToken,
-        image_base64_2: base64Image
+    const formData = new FormData();
+    formData.append("api_key", API_KEY);
+    formData.append("api_secret", API_SECRET);
+    formData.append("face_token1", storedFaceToken);
+    formData.append("image_base64_2", base64Image);
+
+    const response = await axios.post(COMPARE_URL, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
       }
     });
 
-    // Retornamos el porcentaje de confianza (0 - 100)
     return response.data.confidence;
-
   } catch (error) {
     console.error("Error en compareFaces:", error.response?.data || error.message);
     return null;
