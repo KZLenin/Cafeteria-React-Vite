@@ -138,7 +138,7 @@ const LoginForm = () => {
 
             <button
               type="button"
-              className="btn btn-secondary w-100"
+              className="btn btn-outline-warning w-100 mb-2"
               onClick={() => navigate("/")}
             >
               Regresar
