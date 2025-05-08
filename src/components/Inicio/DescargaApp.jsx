@@ -7,19 +7,16 @@ const DescargaApp = () => {
       <p className="lead">
         Reserva una mesa o un espacio para ti directamente desde nuestra app móvil.
       </p>
-      
-      {/* Imagen de la aplicación */}
-      <div className="d-flex justify-content-center my-4">
+
+      <div className="my-4">
         <img
-          className="img-fluid rounded shadow"
+          className="img-fluid rounded shadow mx-auto d-block"
           src="https://i.ytimg.com/vi/lySRx75rsoo/maxresdefault.jpg"
           alt="Vista previa de la aplicación"
-          style={{ maxWidth: "600px" }}
         />
       </div>
 
-      {/* Botones de descarga */}
-      <div className="d-flex justify-content-center gap-3 mt-4">
+      <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4">
         <a
           href="https://www.apple.com/es/app-store/"
           target="_blank"
