@@ -10,15 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "cafeterialp": "file:",
-=======
     "bootstrap": "^5.3.2",
->>>>>>> 1fffc66124fa3fe9f1790aee0101741b67c04dd7
+    "cafeterialp": "file:",
     "firebase": "^11.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "react-webcam": "^7.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

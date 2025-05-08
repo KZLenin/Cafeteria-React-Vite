@@ -10,6 +10,8 @@ import RegisterForm from "../components/Register/RegisterC"; // Asegúrate de te
 import Reservas from "./reservas";
 import AdminPG from "./adminPG";
 
+import FaceRegister from "../components/Register/FaceRegister";
+
 const auth = getAuth(appFirebase);
 
 const Register = ()=> {

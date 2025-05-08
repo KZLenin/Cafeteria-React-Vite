@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import appFirebase from '../../credenciales';
 import {
   getAuth,
@@ -10,6 +10,7 @@ import {
   setDoc
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { detectFace } from "../../utils/faceplusplus";
 
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
@@ -23,12 +24,45 @@ const RegisterForm = () => {
     apellido: "",
     telefono: ""
   });
+
+  const [base64Image, setBase64Image] = useState(null);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
   const navigate = useNavigate();
+
+  // Activar cámara al montar componente
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+        }
+      })
+      .catch(err => {
+        alert("No se pudo acceder a la cámara: " + err.message);
+      });
+  }, []);
+
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
     });
+  };
+
+  const capturePhoto = () => {
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const imageData = canvas.toDataURL("image/jpeg").split(",")[1];
+    setBase64Image(imageData);
+    alert("Foto capturada correctamente");
   };
 
   const handleRegister = async (e) => {
@@ -39,7 +73,15 @@ const RegisterForm = () => {
       return;
     }
 
+    if (!base64Image) {
+      alert("Por favor, captura una foto de tu rostro.");
+      return;
+    }
+
     try {
+      // Detectar rostro y obtener token
+      const faceToken = await detectFace(base64Image);
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         form.email,
@@ -47,19 +89,21 @@ const RegisterForm = () => {
       );
       const user = userCredential.user;
 
+      // Guardar en Firestore
       await setDoc(doc(db, "usuarios", user.uid), {
         correo: form.email,
         nombre: form.nombre,
         apellido: form.apellido,
         telefono: form.telefono,
-        rol: "usuario"
+        rol: "usuario",
+        face_token: faceToken
       });
 
-      alert("Registro exitoso");
-      window.location.href = "/";
+      alert("Registro exitoso con rostro");
+      navigate("/");
     } catch (error) {
       console.error("Error al registrar:", error.message);
-      alert("Ocurrió un error: " + error.message);
+      alert("Error: " + error.message);
     }
   };
 
@@ -142,6 +186,20 @@ const RegisterForm = () => {
               />
             </div>
 
+            {/* Sección para capturar rostro */}
+            <div className="mb-3">
+              <label className="form-label">Captura tu rostro</label>
+              <video ref={videoRef} autoPlay className="w-100 rounded mb-2" />
+              <button
+                type="button"
+                className="btn btn-outline-light w-100"
+                onClick={capturePhoto}
+              >
+                Capturar rostro
+              </button>
+              <canvas ref={canvasRef} style={{ display: "none" }} />
+            </div>
+
             <button type="submit" className="btn btn-outline-warning w-100 mb-2">
               Registrarse
             </button>
@@ -149,14 +207,14 @@ const RegisterForm = () => {
             <button
               type="button"
               className="btn btn-secondary w-100 mb-2"
-              onClick={() => window.location.href = "/"}
+              onClick={() => navigate("/")}
             >
               Regresar
             </button>
 
             <div className="text-center mt-3">
               <small>
-                ¿Ya tienes cuenta ?{" "}
+                ¿Ya tienes cuenta?{" "}
                 <a
                   href="#"
                   onClick={(e) => {
